@@ -1,229 +1,204 @@
 /**
  * ManimPilot Studio - Windows 11 Fluent App Controller
- * Pure professional implementation with zero emojis and authentic Windows 11 behavior.
+ * Implements full interaction model matching Windows 11 Settings (Dark Mode)
+ * Accent: #4CC2FF | Zero emojis | Professional Vector Graphics
  */
 
-// Application State
-const appState = {
-  binary: "10110110",
-  decimal: 182,
-  overlapGuardActive: true,
-  steps: [
-    {
-      id: "step_01",
-      title: "ද්විමය සංඛ්‍යාව ඉදිරිපත් කිරීම (Show Binary)",
-      narration: "අපිට ලබාදීලා තියෙන්නේ 10110110 කියන binary සංඛ්‍යාවයි.",
-      duration: 6.5
-    },
-    {
-      id: "step_02",
-      title: "ස්ථානීය අගයන් දැක්වීම (Place Values)",
-      narration: "දකුණේ සිට වමට දෙකෙහි බලයන් අනුව ස්ථානීය අගයන් පිළිවෙළින් ලියා ගනිමු.",
-      duration: 5.0
-    },
-    {
-      id: "step_03",
-      title: "අගය 1 වන ස්ථාන තෝරාගැනීම (Select Active Bits)",
-      narration: "මෙහි අගය එක වන ස්ථානවලට අදාළ ස්ථානීය අගයන් පමණක් අපි එකතු කිරීමට තෝරාගන්නවා.",
-      duration: 6.0
-    },
-    {
-      id: "step_04",
-      title: "එකතු කිරීමේ ප්‍රකාශනය (Addition Expression)",
-      narration: "දැන් තෝරාගත් අගයන් වන 128 + 32 + 16 + 4 + 2 එකතු කරමු.",
-      duration: 7.0
-    },
-    {
-      id: "step_05",
-      title: "අවසාන පිළිතුර (Final Result)",
-      narration: "එමගින් අපට අවසාන පිළිතුර ලෙස 182 ලැබෙනවා.",
-      duration: 3.2
-    }
-  ]
-};
-
-// DOM Elements
-const inputBinary = document.getElementById("input-binary-val");
-const badgeDecimal = document.getElementById("badge-decimal");
-const heroMathText = document.getElementById("hero-math-text");
-const btnRenderPrimary = document.getElementById("btn-render-primary");
-
-const btnModeVideo = document.getElementById("btn-mode-video");
-const btnModeCanvas = document.getElementById("btn-mode-canvas");
-const videoContainer = document.getElementById("video-container");
-const canvasContainer = document.getElementById("canvas-container");
-const manimPlayer = document.getElementById("manim-player");
-
-const binaryBitsRow = document.getElementById("binary-bits-row");
-const placeValuesRow = document.getElementById("place-values-row");
-const eqVal = document.getElementById("eq-val");
-const canvasSubText = document.getElementById("canvas-sub-text");
-
-const toggleOverlapGuard = document.getElementById("toggle-overlap-guard");
-const toggleStateText = document.querySelector(".toggle-state-text");
-
-const renderModal = document.getElementById("render-modal");
-const btnModalClose = document.getElementById("btn-modal-close");
-const btnModalCancel = document.getElementById("btn-modal-cancel");
-const btnModalExec = document.getElementById("btn-modal-exec");
-const modalRenderProgress = document.getElementById("modal-render-progress");
-const winProgFill = document.getElementById("win-prog-fill");
-const winProgText = document.getElementById("win-prog-text");
-
-// Initialization
 document.addEventListener("DOMContentLoaded", () => {
-  recomputeBinaryMath();
-  bindWin11Events();
-});
+  // Application State
+  const state = {
+    binary: "10110110",
+    decimal: 182,
+    activeTab: "update",
+    viewMode: "video" // "video" or "canvas"
+  };
 
-// Binary Math Recomputation
-function recomputeBinaryMath() {
-  const raw = inputBinary.value.replace(/[^01]/g, "");
-  if (!raw) return;
+  // DOM Elements
+  const inputBinary = document.getElementById("input-binary-val");
+  const badgeDecimal = document.getElementById("badge-decimal");
+  const heroMathText = document.getElementById("hero-math-text");
+  const btnCheckUpdates = document.getElementById("btn-check-updates");
 
-  appState.binary = raw;
-  let dec = 0;
-  const len = raw.length;
-  const activePlaceValues = [];
+  const toggleLatest = document.getElementById("toggle-latest-updates");
+  const toggleLabel = document.getElementById("toggle-label-text");
 
-  for (let i = 0; i < len; i++) {
-    const power = len - 1 - i;
-    const placeVal = Math.pow(2, power);
-    if (raw[i] === "1") {
-      dec += placeVal;
-      activePlaceValues.push(placeVal);
+  const pillVideo = document.getElementById("pill-video");
+  const pillCanvas = document.getElementById("pill-canvas");
+  const videoWrapper = document.getElementById("video-wrapper");
+  const canvasWrapper = document.getElementById("canvas-wrapper");
+  const manimVideo = document.getElementById("manim-video-element");
+
+  const bitsRow = document.getElementById("bits-row");
+  const powersRow = document.getElementById("powers-row");
+  const sumEquation = document.getElementById("sum-equation");
+  const canvasBinaryTag = document.getElementById("canvas-binary-tag");
+
+  const modalOverlay = document.getElementById("modal-overlay");
+  const btnDialogClose = document.getElementById("btn-dialog-close");
+  const btnDialogCancel = document.getElementById("btn-dialog-cancel");
+  const btnDialogExecute = document.getElementById("btn-dialog-execute");
+  const dialogProgressBar = document.getElementById("dialog-progress-bar");
+  const dialogProgressFill = document.getElementById("dialog-progress-fill");
+  const dialogProgressCaption = document.getElementById("dialog-progress-caption");
+
+  const navItems = document.querySelectorAll(".nav-item");
+  const aiChips = document.querySelectorAll(".win11-chip");
+
+  // Recompute Binary Math Function
+  function updateBinaryMath() {
+    let raw = inputBinary.value.replace(/[^01]/g, "");
+    if (!raw) raw = "0";
+
+    state.binary = raw;
+    const len = raw.length;
+    let dec = 0;
+    const activeTerms = [];
+
+    // Clear dynamic grids
+    bitsRow.innerHTML = "";
+    powersRow.innerHTML = "";
+
+    for (let i = 0; i < len; i++) {
+      const bit = raw[i];
+      const power = len - 1 - i;
+      const placeValue = Math.pow(2, power);
+
+      const isBitActive = bit === "1";
+      if (isBitActive) {
+        dec += placeValue;
+        activeTerms.push(placeValue);
+      }
+
+      // Bit chip
+      const bitEl = document.createElement("div");
+      bitEl.className = `bit-chip ${isBitActive ? "active" : ""}`;
+      bitEl.textContent = bit;
+      bitEl.title = `Bit ${power}: 2^${power} = ${placeValue}`;
+      bitsRow.appendChild(bitEl);
+
+      // Power chip
+      const powEl = document.createElement("div");
+      powEl.className = `power-chip ${isBitActive ? "active" : ""}`;
+      powEl.textContent = `2^${power} (${placeValue})`;
+      powersRow.appendChild(powEl);
+    }
+
+    state.decimal = dec;
+    badgeDecimal.textContent = `= ${dec}`;
+    heroMathText.textContent = `${raw}₂ = ${dec}₁₀ (Verified)`;
+    canvasBinaryTag.textContent = `${raw}₂`;
+
+    if (activeTerms.length > 0) {
+      sumEquation.textContent = `${activeTerms.join(" + ")} = ${dec}`;
+    } else {
+      sumEquation.textContent = "0 = 0";
     }
   }
 
-  appState.decimal = dec;
-  badgeDecimal.textContent = `= ${dec}`;
-  heroMathText.textContent = `${raw}₂ = ${dec}₁₀`;
+  // Bind Input Event
+  inputBinary.addEventListener("input", updateBinaryMath);
 
-  // Update Canvas Stage Bit Boxes
-  binaryBitsRow.innerHTML = "";
-  placeValuesRow.innerHTML = "";
+  // Toggle Switch Event
+  toggleLatest.addEventListener("change", (e) => {
+    toggleLabel.textContent = e.target.checked ? "On" : "Off";
+  });
 
-  for (let i = 0; i < len; i++) {
-    const power = len - 1 - i;
-    const placeVal = Math.pow(2, power);
-    const isOne = raw[i] === "1";
+  // Pill Toggles (Video vs Canvas)
+  pillVideo.addEventListener("click", () => {
+    pillVideo.classList.add("active");
+    pillCanvas.classList.remove("active");
+    videoWrapper.style.display = "flex";
+    canvasWrapper.style.display = "none";
+  });
 
-    const bitBox = document.createElement("div");
-    bitBox.className = `win-bit-box ${isOne ? "active" : "dimmed"}`;
-    bitBox.textContent = raw[i];
-    binaryBitsRow.appendChild(bitBox);
+  pillCanvas.addEventListener("click", () => {
+    pillCanvas.classList.add("active");
+    pillVideo.classList.remove("active");
+    videoWrapper.style.display = "none";
+    canvasWrapper.style.display = "block";
+    updateBinaryMath();
+  });
 
-    const pvItem = document.createElement("div");
-    pvItem.className = `win-pv-item ${isOne ? "active" : ""}`;
-    pvItem.textContent = placeVal;
-    placeValuesRow.appendChild(pvItem);
+  // Modal Dialog Handlers
+  function openModal() {
+    modalOverlay.classList.add("open");
+    dialogProgressBar.style.display = "none";
+    dialogProgressFill.style.width = "0%";
+    btnDialogExecute.disabled = false;
+    btnDialogExecute.textContent = "Start Render";
   }
 
-  const exprStr = activePlaceValues.join(" + ");
-  eqVal.textContent = `${exprStr} = ${dec}`;
-  appState.steps[3].narration = `දැන් තෝරාගත් අගයන් වන ${exprStr} එකතු කරමු.`;
-  appState.steps[4].narration = `එමගින් අපට අවසාන පිළිතුර ලෙස ${dec} ලැබෙනවා.`;
-}
+  function closeModal() {
+    modalOverlay.classList.remove("open");
+  }
 
-// Event Bindings
-function bindWin11Events() {
-  // Binary Input change
-  inputBinary.addEventListener("input", recomputeBinaryMath);
+  btnCheckUpdates.addEventListener("click", openModal);
+  btnDialogClose.addEventListener("click", closeModal);
+  btnDialogCancel.addEventListener("click", closeModal);
 
-  // View Mode Switcher
-  btnModeVideo.addEventListener("click", () => {
-    btnModeVideo.classList.add("active");
-    btnModeCanvas.classList.remove("active");
-    videoContainer.style.display = "flex";
-    canvasContainer.style.display = "none";
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) closeModal();
   });
 
-  btnModeCanvas.addEventListener("click", () => {
-    btnModeCanvas.classList.add("active");
-    btnModeVideo.classList.remove("active");
-    videoContainer.style.display = "none";
-    canvasContainer.style.display = "flex";
-    if (manimPlayer) manimPlayer.pause();
-  });
-
-  // Toggle Overlap Guard
-  toggleOverlapGuard.addEventListener("change", (e) => {
-    appState.overlapGuardActive = e.target.checked;
-    toggleStateText.textContent = e.target.checked ? "On" : "Off";
-  });
-
-  // AI Copilot Action Chips
-  document.querySelectorAll(".win-chip").forEach(chip => {
-    chip.addEventListener("click", () => {
-      const type = chip.dataset.ai;
-      handleAiRefinement(type);
-    });
-  });
-
-  // Modal Open & Close
-  btnRenderPrimary.addEventListener("click", () => {
-    renderModal.classList.add("open");
-  });
-  btnModalClose.addEventListener("click", () => {
-    renderModal.classList.remove("open");
-  });
-  btnModalCancel.addEventListener("click", () => {
-    renderModal.classList.remove("open");
-  });
-
-  // Execute Render from Modal
-  btnModalExec.addEventListener("click", () => {
-    modalRenderProgress.style.display = "flex";
-    btnModalExec.disabled = true;
+  // Execute Render Simulation / Verification
+  btnDialogExecute.addEventListener("click", () => {
+    btnDialogExecute.disabled = true;
+    dialogProgressBar.style.display = "flex";
+    dialogProgressFill.style.width = "0%";
 
     const stages = [
-      { pct: 25, label: "Validating schema & mathematical proof..." },
-      { pct: 50, label: "Synthesizing audio timeline & padding..." },
-      { pct: 75, label: "Executing Python Manim Community Engine..." },
-      { pct: 100, label: "Render complete: D:\\ManimPilot\\media\\videos\\scene\\1080p30\\ManimPilotLessonScene.mp4" }
+      { pct: 20, text: "Step 1/5: Validating LessonModel schemas..." },
+      { pct: 45, text: "Step 2/5: Verifying place-value mathematical proofs..." },
+      { pct: 70, text: "Step 3/5: Checking Sinhala speech overlap guard (si-LK)..." },
+      { pct: 90, text: "Step 4/5: Compiling output/scene.py Manim script..." },
+      { pct: 100, text: "Complete! Ready to play 1080p video." }
     ];
 
-    let current = 0;
-    const progressTimer = setInterval(() => {
-      if (current < stages.length) {
-        winProgFill.style.width = `${stages[current].pct}%`;
-        winProgText.textContent = stages[current].label;
-        current++;
+    let currentStage = 0;
+    const interval = setInterval(() => {
+      if (currentStage < stages.length) {
+        dialogProgressFill.style.width = stages[currentStage].pct + "%";
+        dialogProgressCaption.textContent = stages[currentStage].text;
+        currentStage++;
       } else {
-        clearInterval(progressTimer);
+        clearInterval(interval);
         setTimeout(() => {
-          renderModal.classList.remove("open");
-          modalRenderProgress.style.display = "none";
-          btnModalExec.disabled = false;
-          // Reload video
-          if (manimPlayer) {
-            manimPlayer.src = `video.mp4?t=${Date.now()}`;
-            manimPlayer.load();
-            manimPlayer.play();
+          closeModal();
+          // Ensure video tab is active and start playback
+          pillVideo.click();
+          if (manimVideo) {
+            manimVideo.currentTime = 0;
+            manimVideo.play().catch(() => {});
           }
-        }, 1200);
+        }, 600);
       }
-    }, 600);
+    }, 400);
   });
 
-  // Navigation Items Selection
-  document.querySelectorAll(".win-nav-item").forEach(item => {
-    item.addEventListener("click", () => {
-      document.querySelectorAll(".win-nav-item").forEach(i => i.classList.remove("active"));
+  // Navigation Items
+  navItems.forEach(item => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      navItems.forEach(n => n.classList.remove("active"));
       item.classList.add("active");
     });
   });
-}
 
-function handleAiRefinement(action) {
-  if (action === "simplify") {
-    canvasSubText.textContent = `"අපි 1 තියෙන තැන්වල අගයන් විතරක් අරගෙන එකතු කරමු."`;
-    appState.steps[2].narration = "අපි 1 තියෙන තැන්වල අගයන් විතරක් අරගෙන එකතු කරමු.";
-  } else if (action === "natural") {
-    canvasSubText.textContent = `"ඔන්න දැන් අපි කලින් ආපු ස්ථානීය අගයන් ටික එකතු කරමු."`;
-    appState.steps[3].narration = "ඔන්න දැන් අපි කලින් ආපු ස්ථානීය අගයන් ටික එකතු කරමු.";
-  } else if (action === "grade8") {
-    canvasSubText.textContent = `"8 ශ්‍රේණියේ විෂය නිර්දේශයට අනුව ද්විමය සංඛ්‍යා දශම බවට හැරවීම බලමු."`;
-    appState.steps[0].narration = "8 ශ්‍රේණියේ විෂය නිර්දේශයට අනුව ද්විමය සංඛ්‍යා දශම බවට හැරවීම බලමු.";
-  }
-}
+  // AI Copilot Chips
+  aiChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      aiChips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      const action = chip.getAttribute("data-ai");
+      if (action === "simplify") {
+        inputBinary.value = "1010";
+      } else if (action === "natural") {
+        inputBinary.value = "10110110";
+      }
+      updateBinaryMath();
+    });
+  });
+
+  // Initialize
+  updateBinaryMath();
+});
