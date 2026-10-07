@@ -3,416 +3,444 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ManimPilot Studio — AI Mathematical Animation Creator</title>
+  <title>ManimPilot Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- App Container (Windows 11 Mica Window Frame) -->
-  <div class="window-shell">
+<body class="win11-dark">
+
+  <!-- Windows 11 Application Frame -->
+  <div class="win-app-window">
     
     <!-- Titlebar -->
-    <header class="titlebar" id="app-titlebar">
+    <header class="win-titlebar" id="app-titlebar">
       <div class="titlebar-left">
-        <div class="app-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z" fill="url(#brandGrad)"/>
-            <defs>
-              <linearGradient id="brandGrad" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#58A6FF"/>
-                <stop offset="1" stop-color="#7EE787"/>
-              </linearGradient>
-            </defs>
+        <div class="win-app-logo">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="1" y="1" width="6" height="6" rx="1" fill="#60CDFF"/>
+            <rect x="9" y="1" width="6" height="6" rx="1" fill="#60CDFF"/>
+            <rect x="1" y="9" width="6" height="6" rx="1" fill="#60CDFF"/>
+            <rect x="9" y="9" width="6" height="6" rx="1" fill="#60CDFF"/>
           </svg>
         </div>
-        <span class="app-title">ManimPilot Studio</span>
-        <span class="project-tag">BinaryToDecimal.manimpilot</span>
+        <span class="win-titlebar-text">ManimPilot Studio</span>
+        <span class="win-titlebar-sub">BinaryToDecimal.manimpilot</span>
       </div>
 
       <div class="titlebar-center">
-        <div class="quick-status">
-          <span class="status-dot"></span>
-          <span class="status-text">AI Ready (Gemini 2.0 Flash)</span>
+        <div class="win-search-box">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" class="search-icon">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+          <input type="text" placeholder="Find a step, setting, or command" spellcheck="false">
         </div>
       </div>
 
       <div class="titlebar-right">
-        <button class="win-btn" title="Minimize">─</button>
-        <button class="win-btn" title="Maximize">□</button>
-        <button class="win-btn win-close" title="Close">✕</button>
+        <button class="win-caption-btn win-min" title="Minimize">
+          <svg width="10" height="1" viewBox="0 0 10 1"><rect width="10" height="1" fill="currentColor"/></svg>
+        </button>
+        <button class="win-caption-btn win-max" title="Maximize">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><rect x="0.5" y="0.5" width="9" height="9" stroke="currentColor"/></svg>
+        </button>
+        <button class="win-caption-btn win-close" title="Close">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1L9 9M9 1L1 9" stroke="currentColor" stroke-width="1.1"/></svg>
+        </button>
       </div>
     </header>
 
-    <!-- Global Command Bar -->
-    <nav class="command-bar" aria-label="Main Toolbar">
-      <div class="toolbar-group">
-        <button class="btn btn-primary" id="btn-new-lesson">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-          <span>New Lesson</span>
-        </button>
-        <button class="btn btn-secondary" id="btn-generate-ai">
-          <span class="sparkle">✨</span>
-          <span>Generate Lesson</span>
-        </button>
-        <button class="btn btn-secondary" id="btn-verify-math">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Verify Math</span>
-        </button>
-      </div>
-
-      <div class="toolbar-center">
-        <div class="input-pill">
-          <span class="input-label">Binary:</span>
-          <input type="text" id="binary-input" value="10110110" maxlength="16" spellcheck="false" title="Enter binary number">
-          <span class="decimal-badge" id="decimal-preview">= 182</span>
-        </div>
-      </div>
-
-      <div class="toolbar-group">
-        <button class="btn btn-accent" id="btn-render-modal">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span>Render Manim</span>
-        </button>
-        <button class="btn btn-icon" id="btn-settings" title="Settings">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Main Workspace Layout -->
-    <main class="workspace-body">
+    <!-- Main Body Container -->
+    <div class="win-app-body">
       
-      <!-- Left Rail: Projects & Templates -->
-      <aside class="sidebar-rail" id="nav-rail">
-        <div class="rail-section">
-          <div class="section-heading">WORKSPACE</div>
-          <ul class="nav-list">
-            <li class="nav-item active" data-view="editor">
-              <span class="nav-icon">🎬</span>
-              <span class="nav-text">Studio Editor</span>
-            </li>
-            <li class="nav-item" data-view="timeline">
-              <span class="nav-icon">⏱️</span>
-              <span class="nav-text">Timeline & Sync</span>
-            </li>
-            <li class="nav-item" data-view="queue">
-              <span class="nav-icon">🚀</span>
-              <span class="nav-text">Render Queue</span>
-              <span class="badge">1</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="rail-section">
-          <div class="section-heading">TEMPLATES</div>
-          <ul class="nav-list small">
-            <li class="template-item active" data-type="bin2dec">
-              <span class="dot-indicator"></span>
-              <span>Binary → Decimal</span>
-            </li>
-            <li class="template-item" data-type="dec2bin">
-              <span class="dot-indicator"></span>
-              <span>Decimal → Binary</span>
-            </li>
-            <li class="template-item" data-type="fractions">
-              <span class="dot-indicator"></span>
-              <span>Fractions Visualizer</span>
-            </li>
-            <li class="template-item" data-type="algebra">
-              <span class="dot-indicator"></span>
-              <span>Algebra Equations</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="rail-section bottom-pinned">
-          <div class="system-card">
-            <div class="card-title">Engine Status</div>
-            <div class="card-detail">Manim Community: <span class="text-green">Ready</span></div>
-            <div class="card-detail">Math Verifier: <span class="text-green">Verified ✓</span></div>
-            <div class="card-detail">Voice Sync: <span class="text-green">0 Overlaps</span></div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Center Stage: Canvas Preview & Timeline -->
-      <section class="stage-container">
+      <!-- Left Navigation Pane (Windows 11 Settings Style) -->
+      <nav class="win-nav-pane" aria-label="Navigation">
         
-        <!-- Top Stage: Animation Player Card -->
-        <div class="player-card">
-          <div class="player-header">
-            <div class="lesson-meta">
-              <h1 class="lesson-title" id="stage-title">ද්විමය සංඛ්‍යා දශම බවට හැරවීම (10110110)</h1>
-              <span class="step-pill" id="stage-step-pill">Step 1 of 5 • Show Binary</span>
+        <!-- User Profile Card -->
+        <div class="win-profile-tile">
+          <div class="profile-avatar">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#60CDFF">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+          <div class="profile-meta">
+            <span class="profile-name">Chamidu Dilshan</span>
+            <span class="profile-sub">ManimPilot Workspace</span>
+          </div>
+        </div>
+
+        <!-- Nav Items -->
+        <ul class="win-nav-menu">
+          <li class="win-nav-item active" data-tab="studio">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L8.707 1.5z"/>
+              </svg>
             </div>
-            <div class="player-resolution">
-              <div class="view-mode-pill">
-                <button class="view-btn active" id="btn-view-video">🎬 Rendered Manim Video</button>
-                <button class="view-btn" id="btn-view-canvas">⚡ Live Canvas</button>
-              </div>
-              <span class="res-tag">1080p @ 30fps</span>
-              <span class="lang-tag">si-LK (Sinhala)</span>
+            <span class="nav-label">Studio Editor</span>
+          </li>
+
+          <li class="win-nav-item" data-tab="timeline">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+              </svg>
+            </div>
+            <span class="nav-label">Timeline & Audio Sync</span>
+          </li>
+
+          <li class="win-nav-item" data-tab="math">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm2 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V8zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V8zM6 11a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+              </svg>
+            </div>
+            <span class="nav-label">Mathematical Verification</span>
+          </li>
+
+          <li class="win-nav-item" data-tab="voice">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+              </svg>
+            </div>
+            <span class="nav-label">Voice & Speech Synthesis</span>
+          </li>
+
+          <li class="win-nav-item" data-tab="queue">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 13.5 1h-11zm4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM4 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+              </svg>
+            </div>
+            <span class="nav-label">Render Queue</span>
+          </li>
+
+          <li class="win-nav-item" data-tab="settings">
+            <div class="nav-active-pill"></div>
+            <div class="nav-icon-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
+              </svg>
+            </div>
+            <span class="nav-label">Settings</span>
+          </li>
+        </ul>
+
+        <!-- Bottom System Status in Sidebar -->
+        <div class="nav-footer-status">
+          <div class="engine-badge">
+            <span class="badge-dot"></span>
+            <span>Manim Community v0.21.0</span>
+          </div>
+          <div class="engine-badge secondary">
+            <span class="badge-dot blue"></span>
+            <span>.NET 8 Runtime Ready</span>
+          </div>
+        </div>
+
+      </nav>
+
+      <!-- Main Content Stage (Windows 11 Settings Style Page) -->
+      <main class="win-content-pane">
+        
+        <!-- Breadcrumb / Header Area -->
+        <div class="page-header">
+          <div class="breadcrumb">
+            <span>Studio</span>
+            <span class="sep">/</span>
+            <span>Mathematical Animations</span>
+          </div>
+          <h1 class="page-title">Binary to Decimal Conversion</h1>
+        </div>
+
+        <!-- Hero Card (Exact replica of "You're up to date" Card in Windows 11) -->
+        <section class="win-hero-card" id="hero-card">
+          <div class="hero-icon-container">
+            <!-- Windows 11 Update style blue sync loop icon with green checkmark -->
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M24 6C14.06 6 6 14.06 6 24c0 4.12 1.4 7.91 3.75 10.96l-3.21 3.2A1.5 1.5 0 0 0 7.6 40.72l7.5-1.5a1.5 1.5 0 0 0 1.18-1.18l1.5-7.5a1.5 1.5 0 0 0-2.56-1.06l-3.2 3.2A14.94 14.94 0 0 1 9 24C9 15.72 15.72 9 24 9c8.28 0 15 6.72 15 15 0 3.72-1.36 7.12-3.62 9.77l2.25 1.93A17.93 17.93 0 0 0 42 24c0-9.94-8.06-18-18-18z" fill="#0078D4"/>
+              <circle cx="36" cy="36" r="10" fill="#2EA043"/>
+              <path d="M32 36l3 3 6-6" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="hero-info">
+            <h2 class="hero-title" id="hero-status-title">Lesson Verified & Ready to Render</h2>
+            <div class="hero-meta">
+              <span>Last verified: Today, 12:31 AM</span>
+              <span class="bullet">•</span>
+              <span class="accent-text" id="hero-math-text">10110110₂ = 182₁₀</span>
+              <span class="bullet">•</span>
+              <span>0 Narration Overlaps</span>
             </div>
           </div>
 
-          <!-- Video / SVG Animation Canvas -->
-          <div class="canvas-viewport" id="viewport">
-            <!-- Actual Rendered Manim MP4 Video -->
-            <video id="manim-video-player" class="manim-video-element" src="video.mp4" playsinline preload="auto" controls style="width: 100%; height: 100%; object-fit: contain; z-index: 5;"></video>
-
-            <div class="canvas-background" id="canvas-bg" style="display: none;"></div>
-            
-            <!-- Dynamic Animation Objects -->
-            <div class="animation-stage" id="animation-stage" style="display: none;">
-              <div class="stage-topic-header">Binary to Decimal Conversion</div>
-              
-              <!-- Bits Container -->
-              <div class="binary-grid" id="binary-grid">
-                <!-- Dynamically generated via JS -->
-              </div>
-
-              <!-- Place Values Container -->
-              <div class="place-values-grid" id="place-values-grid">
-                <!-- Dynamically generated via JS -->
-              </div>
-
-              <!-- Mathematical Equation Output -->
-              <div class="math-expression-display" id="math-expression">
-                <span class="eq-label">Sum:</span>
-                <span class="eq-content" id="eq-content">128 + 32 + 16 + 4 + 2 = 182</span>
-              </div>
-            </div>
-
-            <!-- Spoken Subtitle Overlay -->
-            <div class="narration-subtitle-box" id="subtitle-box">
-              <div class="audio-wave-anim">
-                <span></span><span></span><span></span><span></span>
-              </div>
-              <p class="subtitle-text" id="subtitle-text">
-                "අපිට දීලා තියෙන්නේ 10110110 කියන ද්විමය සංඛ්‍යාවයි. අපි දැන් මෙය දශම සංඛ්‍යාවක් බවට හරවමු."
-              </p>
-            </div>
-          </div>
-
-          <!-- Player Controls Bar -->
-          <div class="player-controls">
-            <button class="ctl-btn" id="btn-play-pause" title="Play/Pause">
-              <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <div class="hero-action">
+            <button class="win-btn-accent" id="btn-render-primary">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <polygon points="4 2 14 8 4 14 4 2"/>
+              </svg>
+              <span>Render Manim Video</span>
             </button>
-            <button class="ctl-btn" id="btn-rewind" title="Restart">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-            </button>
+          </div>
+        </section>
+
+        <!-- Section Title -->
+        <h3 class="settings-section-title">Studio Workspace & Animation Output</h3>
+
+        <!-- Card 1: Animation Player Expander Card -->
+        <div class="win-card player-expander-card">
+          <div class="card-header-bar">
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="#60CDFF">
+                <path d="M4 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H4zm0 1h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm3.5 3a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .757.429l4.5-2.5a.5.5 0 0 0 0-.858l-4.5-2.5A.5.5 0 0 0 7.5 7z"/>
+              </svg>
+            </div>
+            <div class="card-titles">
+              <span class="card-main-title">Animation Output Viewer</span>
+              <span class="card-sub-title">1080p @ 30 FPS • Generated directly by Manim Community Engine</span>
+            </div>
             
-            <div class="scrub-container">
-              <span class="time-label" id="current-time">00:00.0</span>
-              <input type="range" id="timeline-scrubber" min="0" max="31.26" step="0.1" value="0">
-              <span class="time-label" id="total-time">00:31.2</span>
-            </div>
-
-            <div class="ctl-group-right">
-              <button class="ctl-btn small" id="btn-speed">1.0x</button>
-              <button class="ctl-btn small" id="btn-fullscreen" title="Fullscreen">⛶</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Stage: Multi-track Timeline -->
-        <div class="timeline-panel">
-          <div class="timeline-header">
-            <div class="timeline-title-area">
-              <span class="panel-icon">⏱️</span>
-              <span class="panel-title">Synchronized Event Timeline</span>
-              <span class="overlap-shield">✓ Overlap-Free Guard Active</span>
-            </div>
-            <div class="timeline-actions">
-              <button class="btn btn-tiny" id="btn-auto-pad">+ Auto Pad Gaps</button>
-              <button class="btn btn-tiny" id="btn-zoom-fit">Fit to Screen</button>
-            </div>
-          </div>
-
-          <div class="timeline-viewport">
-            <!-- Time ruler ticks -->
-            <div class="time-ruler" id="time-ruler">
-              <span>0s</span><span>5s</span><span>10s</span><span>15s</span><span>20s</span><span>25s</span><span>30s</span>
-            </div>
-
-            <!-- Visual Animation Track -->
-            <div class="track-row">
-              <div class="track-label">
-                <span class="track-icon">🎬</span>
-                <span>Visuals</span>
+            <div class="card-control-area">
+              <div class="win-segmented-pill">
+                <button class="seg-btn active" id="btn-mode-video">Rendered Manim MP4</button>
+                <button class="seg-btn" id="btn-mode-canvas">Live Canvas Sim</button>
               </div>
-              <div class="track-lane" id="visual-lane">
-                <!-- Visual event blocks generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Video Viewport -->
+          <div class="player-body">
+            
+            <!-- Real Rendered MP4 Video -->
+            <div class="video-container" id="video-container">
+              <video id="manim-player" src="video.mp4" controls playsinline preload="auto">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <!-- Canvas View (Hidden by default, toggleable) -->
+            <div class="canvas-container" id="canvas-container" style="display: none;">
+              <div class="canvas-stage">
+                <div class="canvas-topic">Binary to Decimal Conversion</div>
+                <div class="binary-bits-row" id="binary-bits-row">
+                  <!-- Dynamically rendered via JS -->
+                </div>
+                <div class="place-values-row" id="place-values-row">
+                  <!-- Dynamically rendered via JS -->
+                </div>
+                <div class="equation-box" id="equation-box">
+                  <span class="eq-tag">Equation:</span>
+                  <span class="eq-val" id="eq-val">128 + 32 + 16 + 4 + 2 = 182</span>
+                </div>
+              </div>
+              <div class="canvas-subtitle-bar" id="canvas-sub-bar">
+                <p id="canvas-sub-text">"අපිට ලබාදීලා තියෙන්නේ 10110110 කියන binary සංඛ්‍යාවයි."</p>
               </div>
             </div>
 
-            <!-- Voice Narration Track -->
-            <div class="track-row">
-              <div class="track-label">
-                <span class="track-icon">🔊</span>
-                <span>Narration</span>
+          </div>
+        </div>
+
+        <!-- Section Title: Lesson & Configuration Options -->
+        <h3 class="settings-section-title">Lesson Configuration</h3>
+
+        <!-- Card 2: Binary Input & Math Parameters (Windows 11 Settings Tile Style) -->
+        <div class="win-setting-tile">
+          <div class="tile-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="#60CDFF">
+              <path d="M3 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4zm2 1v10h10V5H5zm2 2h6v1H7V7zm0 3h2v1H7v-1zm4 0h2v1h-2v-1zm-4 3h2v1H7v-1zm4 0h2v1h-2v-1z"/>
+            </svg>
+          </div>
+          <div class="tile-titles">
+            <span class="tile-label">Binary Number Sequence</span>
+            <span class="tile-desc">Deterministically converts to decimal place-values (Powers of 2: 128, 64, 32, 16, 8, 4, 2, 1)</span>
+          </div>
+          <div class="tile-control">
+            <div class="win-input-group">
+              <span class="input-prefix">Binary:</span>
+              <input type="text" id="input-binary-val" value="10110110" maxlength="16" spellcheck="false">
+              <span class="input-badge" id="badge-decimal">= 182</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Narration & Language Schedule Tile -->
+        <div class="win-setting-tile">
+          <div class="tile-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="#60CDFF">
+              <path d="M10 2a4 4 0 0 0-4 4v4a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4zm-3 8a3 3 0 0 0 6 0V6a3 3 0 0 0-6 0v4zm8.5-2a.5.5 0 0 1 .5.5 6 6 0 0 1-5 5.917V16.5h2a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h2v-2.083A6 6 0 0 1 4 10.5a.5.5 0 0 1 1 0 5 5 0 0 0 10 0 .5.5 0 0 1 .5-.5z"/>
+            </svg>
+          </div>
+          <div class="tile-titles">
+            <span class="tile-label">Educational Speech & Dialect</span>
+            <span class="tile-desc">Sinhala (si-LK) • Spoken representation phonetic text naturalization active</span>
+          </div>
+          <div class="tile-control">
+            <button class="win-btn-secondary" id="btn-edit-narration">
+              <span>Inspect Narration</span>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Overlap Prevention Shield Tile -->
+        <div class="win-setting-tile">
+          <div class="tile-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="#2EA043">
+              <path d="M10 2l6 2.5v5.5c0 4-2.8 7.6-6 8.5-3.2-.9-6-4.5-6-8.5V4.5L10 2zm0 1.1L5 5.2v4.8c0 3.3 2.2 6.4 5 7.2 2.8-.8 5-3.9 5-7.2V5.2L10 3.1zm-1 9.9l-2.5-2.5.7-.7 1.8 1.8 4.3-4.3.7.7-5 5z"/>
+            </svg>
+          </div>
+          <div class="tile-titles">
+            <span class="tile-label">NarrationScheduler Overlap Guard</span>
+            <span class="tile-desc">Detects audio start/end boundaries and enforces a 0.3s silence buffer between steps</span>
+          </div>
+          <div class="tile-control">
+            <!-- Windows 11 style Toggle Switch -->
+            <label class="win-toggle-switch">
+              <input type="checkbox" id="toggle-overlap-guard" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-state-text">On</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Card 5: AI Copilot Quick Assist -->
+        <div class="win-setting-tile">
+          <div class="tile-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="#D2A8FF">
+              <path d="M10 1l2.3 5.4L18 8l-4.4 3.8L15 18l-5-3-5 3 1.4-6.2L2 8l5.7-1.6L10 1z"/>
+            </svg>
+          </div>
+          <div class="tile-titles">
+            <span class="tile-label">AI Studio Copilot</span>
+            <span class="tile-desc">Gemini 2.0 Flash • One-click natural Sinhala lesson enhancement</span>
+          </div>
+          <div class="tile-control">
+            <div class="win-chip-group">
+              <button class="win-chip" data-ai="simplify">Make Simpler</button>
+              <button class="win-chip" data-ai="natural">Natural Dialect</button>
+              <button class="win-chip" data-ai="grade8">Grade 8 Level</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <h3 class="settings-section-title">Timeline Synchronization Tracks</h3>
+
+        <div class="win-card timeline-card">
+          <div class="timeline-header-meta">
+            <div class="track-legend">
+              <span class="legend-item"><span class="legend-color blue"></span> Visual Keyframe</span>
+              <span class="legend-item"><span class="legend-color green"></span> Audio Narration</span>
+            </div>
+            <span class="timeline-total">Total Duration: 00:31.26</span>
+          </div>
+
+          <!-- Timeline Rows -->
+          <div class="timeline-tracks-area">
+            <div class="timeline-row">
+              <span class="row-tag">Visuals</span>
+              <div class="row-lane" id="lane-visuals">
+                <div class="win-timeline-block visual" style="left: 0%; width: 22.7%;">Step 1 • Show Binary</div>
+                <div class="win-timeline-block visual" style="left: 23%; width: 17.9%;">Step 2 • Place Values</div>
+                <div class="win-timeline-block visual" style="left: 41.2%; width: 21.1%;">Step 3 • Select Active Bits</div>
+                <div class="win-timeline-block visual" style="left: 62.7%; width: 24.3%;">Step 4 • Addition Expression</div>
+                <div class="win-timeline-block visual" style="left: 87.3%; width: 12.7%;">Step 5 • Final Answer</div>
               </div>
-              <div class="track-lane" id="narration-lane">
-                <!-- Narration blocks generated dynamically -->
+            </div>
+
+            <div class="timeline-row">
+              <span class="row-tag">Audio</span>
+              <div class="row-lane" id="lane-audio">
+                <div class="win-timeline-block audio" style="left: 1%; width: 20.8%;">Narration 1 (6.5s)</div>
+                <div class="win-timeline-block audio" style="left: 24%; width: 16.0%;">Narration 2 (5.0s)</div>
+                <div class="win-timeline-block audio" style="left: 42.2%; width: 19.2%;">Narration 3 (6.0s)</div>
+                <div class="win-timeline-block audio" style="left: 63.7%; width: 22.4%;">Narration 4 (7.0s)</div>
+                <div class="win-timeline-block audio" style="left: 88.3%; width: 10.2%;">Narration 5 (3.2s)</div>
               </div>
             </div>
-
-            <!-- Playhead scrubber line -->
-            <div class="playhead" id="timeline-playhead">
-              <div class="playhead-handle"></div>
-            </div>
           </div>
         </div>
 
-      </section>
+      </main>
 
-      <!-- Right Sidebar: AI Studio & Copilot -->
-      <aside class="sidebar-copilot">
-        <div class="copilot-header">
-          <div class="copilot-title">
-            <span class="sparkle">✨</span>
-            <span>AI Copilot & Inspector</span>
-          </div>
-          <span class="model-badge">Gemini</span>
-        </div>
+    </div>
 
-        <!-- Active Step Property Inspector -->
-        <div class="inspector-card">
-          <div class="inspector-title">Active Step: <span id="insp-step-id">step_01</span></div>
-          
-          <div class="prop-group">
-            <label class="prop-label">Step Type</label>
-            <input type="text" class="prop-input" id="insp-type" value="show_binary" readonly>
-          </div>
-
-          <div class="prop-group">
-            <label class="prop-label">Visual Duration</label>
-            <div class="input-with-unit">
-              <input type="number" class="prop-input" id="insp-duration" value="6.5" step="0.5">
-              <span>sec</span>
-            </div>
-          </div>
-
-          <div class="prop-group">
-            <label class="prop-label">Sinhala Narration (Educational)</label>
-            <textarea class="prop-textarea" id="insp-narration" rows="3">අපිට දීලා තියෙන්නේ 10110110 කියන binary සංඛ්‍යාවයි. අපි දැන් මෙය දශම සංඛ්‍යාවක් බවට හරවමු.</textarea>
-          </div>
-
-          <div class="prop-group">
-            <label class="prop-label">Spoken Representation (Phonetic)</label>
-            <textarea class="prop-textarea phonetic" id="insp-spoken" rows="2">අපිට දීලා තියෙන්නේ එක, බිංදුව, එක, එක, බිංදුව, එක, එක, බිංදුව කියන ද්විමය සංඛ්‍යාවයි.</textarea>
-          </div>
-
-          <button class="btn btn-secondary full-width" id="btn-update-step">Apply Changes</button>
-        </div>
-
-        <!-- AI Assistant Action Prompts -->
-        <div class="copilot-prompts">
-          <div class="section-heading">QUICK AI ASSISTANT</div>
-          <div class="chip-grid">
-            <button class="ai-chip" data-action="simplify">🌱 Make simpler</button>
-            <button class="ai-chip" data-action="sinhala">🇱🇰 Natural Sinhala</button>
-            <button class="ai-chip" data-action="grade8">🎒 Grade 8 level</button>
-            <button class="ai-chip" data-action="shorten">⏱️ Shorten speech</button>
-            <button class="ai-chip" data-action="verify">🔍 Math check</button>
-          </div>
-        </div>
-
-        <!-- Chat / Copilot interaction -->
-        <div class="copilot-chat">
-          <div class="chat-logs" id="chat-logs">
-            <div class="chat-msg ai">
-              <span class="msg-sender">Copilot:</span>
-              <p>Lesson plan loaded! Verified 10110110 = 182 with 0 narration collisions. Ready to edit or export.</p>
-            </div>
-          </div>
-          <div class="chat-input-bar">
-            <input type="text" id="copilot-prompt-input" placeholder="Ask AI to refine lesson or script..." spellcheck="false">
-            <button class="btn-send" id="btn-send-prompt">➤</button>
-          </div>
-        </div>
-
-      </aside>
-
-    </main>
-
-    <!-- Bottom Status Bar -->
-    <footer class="app-statusbar">
+    <!-- Windows 11 Status Bar -->
+    <footer class="win-statusbar">
       <div class="status-left">
-        <span class="status-item"><span class="bullet-green">●</span> Ready</span>
-        <span class="status-separator">|</span>
-        <span class="status-item">5 Steps</span>
-        <span class="status-separator">|</span>
-        <span class="status-item">Sinhala Audio Synced</span>
-        <span class="status-separator">|</span>
-        <span class="status-item">Estimated Runtime: 00:31.26</span>
+        <span class="status-pill"><span class="dot-green"></span> Ready</span>
+        <span class="status-div"></span>
+        <span>5 Steps</span>
+        <span class="status-div"></span>
+        <span>Output: D:\ManimPilot\media\videos\scene\1080p30\ManimPilotLessonScene.mp4</span>
       </div>
       <div class="status-right">
-        <span class="status-item">Encoding: H.264 / AAC</span>
-        <span class="status-separator">|</span>
-        <span class="status-item">Framework: .NET 8 + Manim Community</span>
+        <span>Encoding: H.264 • Audio: AAC 44.1kHz</span>
       </div>
     </footer>
 
   </div>
 
-  <!-- Render / Export Modal Dialog -->
-  <div class="modal-overlay" id="render-modal">
-    <div class="modal-window">
-      <div class="modal-header">
-        <div class="modal-title">
-          <span class="modal-icon">🎬</span>
-          <span>Build & Render Manim Scene</span>
-        </div>
-        <button class="modal-close" id="btn-close-modal">✕</button>
+  <!-- Modal: Pre-Flight Verification & Rendering Dialog -->
+  <div class="win-modal-overlay" id="render-modal">
+    <div class="win-modal-dialog">
+      <div class="modal-title-bar">
+        <span class="modal-caption">Manim Render Pipeline</span>
+        <button class="modal-close-btn" id="btn-modal-close">✕</button>
       </div>
 
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>Pre-flight 5-Stage Verification</h3>
-          <div class="checklist">
-            <div class="check-item"><span class="badge-check">✓</span> Schema Integrity (Valid LessonModel)</div>
-            <div class="check-item"><span class="badge-check">✓</span> Mathematical Verification (10110110 = 182)</div>
-            <div class="check-item"><span class="badge-check">✓</span> Timeline Anchor Alignment</div>
-            <div class="check-item"><span class="badge-check">✓</span> Narration Overlap Scan (0 Overlaps)</div>
-            <div class="check-item"><span class="badge-check">✓</span> Scene IR Graph State Clean</div>
+      <div class="modal-contents">
+        <h3 class="modal-section-h">5-Stage Verification Checklist</h3>
+        <div class="modal-checks">
+          <div class="check-row">
+            <svg class="check-svg" width="16" height="16" viewBox="0 0 16 16" fill="#2EA043"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+            <span>Schema Structure (LessonModel v1 validated)</span>
+          </div>
+          <div class="check-row">
+            <svg class="check-svg" width="16" height="16" viewBox="0 0 16 16" fill="#2EA043"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+            <span>Mathematical Proof Verification (10110110 = 182 verified)</span>
+          </div>
+          <div class="check-row">
+            <svg class="check-svg" width="16" height="16" viewBox="0 0 16 16" fill="#2EA043"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+            <span>Timeline Anchors & Visual Triggers Mapped</span>
+          </div>
+          <div class="check-row">
+            <svg class="check-svg" width="16" height="16" viewBox="0 0 16 16" fill="#2EA043"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+            <span>Audio Collisions & Overlaps (0 detected)</span>
+          </div>
+          <div class="check-row">
+            <svg class="check-svg" width="16" height="16" viewBox="0 0 16 16" fill="#2EA043"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>
+            <span>Manim Community Python Script Syntax Verified</span>
           </div>
         </div>
 
-        <div class="modal-section">
-          <h3>Render Settings</h3>
-          <div class="radio-group">
-            <label class="radio-label active">
-              <input type="radio" name="renderQuality" value="quick" checked>
-              <div>
-                <strong>Quick Preview (720p @ 30fps)</strong>
-                <p>Fast render for audio-visual timing checks.</p>
-              </div>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="renderQuality" value="master">
-              <div>
-                <strong>Master Export (1080p @ 60fps)</strong>
-                <p>Full resolution production MP4 with pristine anti-aliasing.</p>
-              </div>
-            </label>
+        <div class="modal-render-bar" id="modal-render-progress" style="display: none;">
+          <div class="win-prog-track">
+            <div class="win-prog-fill" id="win-prog-fill"></div>
           </div>
-        </div>
-
-        <div class="render-progress" id="render-progress-box" style="display: none;">
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
-          </div>
-          <div class="progress-status" id="progress-status-text">Generating Python scene...</div>
+          <span class="prog-text" id="win-prog-text">Rendering Manim Scene (16 animations)...</span>
         </div>
       </div>
 
-      <div class="modal-footer">
-        <button class="btn btn-secondary" id="btn-cancel-render">Cancel</button>
-        <button class="btn btn-accent" id="btn-start-render">Start Render</button>
+      <div class="modal-actions">
+        <button class="win-btn-secondary" id="btn-modal-cancel">Cancel</button>
+        <button class="win-btn-accent" id="btn-modal-exec">Execute Render</button>
       </div>
     </div>
   </div>

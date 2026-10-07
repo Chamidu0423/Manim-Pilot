@@ -1,39 +1,45 @@
 /* ==========================================================================
-   ManimPilot Studio - Fluent Windows 11 Design System (Vanilla CSS)
+   ManimPilot Studio - Authentic Windows 11 Fluent Design System
+   Exact replica of Windows 11 Settings (Dark Mode) aesthetic
    ========================================================================== */
 
 :root {
-  --bg-desktop: #090D12;
-  --bg-mica: rgba(18, 22, 30, 0.88);
-  --bg-card: rgba(28, 34, 46, 0.7);
-  --bg-card-hover: rgba(38, 46, 62, 0.8);
-  --bg-input: rgba(15, 19, 26, 0.85);
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-bright: rgba(255, 255, 255, 0.16);
-  --border-accent: rgba(88, 166, 255, 0.4);
+  /* Windows 11 System Colors */
+  --win-bg-canvas: #202020;
+  --win-bg-nav: #202020;
+  --win-bg-card: rgba(255, 255, 255, 0.045);
+  --win-bg-card-hover: rgba(255, 255, 255, 0.075);
+  --win-bg-card-active: rgba(255, 255, 255, 0.09);
+  --win-bg-subtle: rgba(255, 255, 255, 0.06);
 
-  --text-primary: #F0F6FC;
-  --text-secondary: #8B949E;
-  --text-muted: #6E7681;
-  
-  --color-primary: #58A6FF;
-  --color-primary-glow: rgba(88, 166, 255, 0.25);
-  --color-accent: #7EE787;
-  --color-accent-glow: rgba(126, 231, 135, 0.25);
-  --color-purple: #D2A8FF;
-  --color-danger: #F85149;
+  /* Borders */
+  --win-border-card: rgba(255, 255, 255, 0.07);
+  --win-border-divider: rgba(255, 255, 255, 0.05);
+  --win-border-input: rgba(255, 255, 255, 0.12);
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  /* Accent Colors (Windows 11 Signature Blue) */
+  --win-accent: #60CDFF;
+  --win-accent-hover: #51BAEB;
+  --win-accent-text: #000000;
+  --win-accent-muted: rgba(96, 205, 255, 0.15);
+  --win-success: #2EA043;
+  --win-danger: #C42B1C;
+
+  /* Typography Colors */
+  --win-text-primary: #FFFFFF;
+  --win-text-secondary: #A0A0A0;
+  --win-text-tertiary: #7A7A7A;
+  --win-text-disabled: #5A5A5A;
+
+  /* Typography Font Stacks */
+  --font-win: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+
+  /* Radii */
+  --radius-window: 8px;
+  --radius-card: 6px;
+  --radius-btn: 4px;
   --radius-pill: 999px;
-
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-  --shadow-window: 0 24px 64px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 * {
@@ -43,50 +49,50 @@
   -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background: var(--bg-desktop);
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(88, 166, 255, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(126, 231, 135, 0.06) 0%, transparent 40%);
-  color: var(--text-primary);
-  font-family: var(--font-main);
+body.win11-dark {
+  background-color: #181818;
+  color: var(--win-text-primary);
+  font-family: var(--font-win);
+  font-size: 14px;
   height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: 8px;
 }
 
 /* ==========================================================================
-   Window Frame (Mica & Acrylic)
+   Window Frame
    ========================================================================== */
 
-.window-shell {
+.win-app-window {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1560px;
   height: 100%;
-  max-height: 960px;
-  background: var(--bg-mica);
-  backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-window);
+  max-height: 940px;
+  background-color: var(--win-bg-canvas);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-window);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Titlebar */
-.titlebar {
-  height: 42px;
-  background: rgba(13, 17, 23, 0.6);
-  border-bottom: 1px solid var(--border-subtle);
+/* ==========================================================================
+   Titlebar (Windows 11 Native Look)
+   ========================================================================== */
+
+.win-titlebar {
+  height: 40px;
+  background-color: #202020;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px 0 16px;
+  padding: 0 0 0 16px;
   user-select: none;
+  border-bottom: 1px solid var(--win-border-divider);
 }
 
 .titlebar-left {
@@ -95,46 +101,63 @@ body {
   gap: 10px;
 }
 
-.app-icon svg {
-  display: block;
-}
-
-.app-title {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  color: var(--text-primary);
-}
-
-.project-tag {
-  font-size: 11px;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-subtle);
-}
-
-.titlebar-center .quick-status {
+.win-app-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+}
+
+.win-titlebar-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--win-text-primary);
+}
+
+.win-titlebar-sub {
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--win-text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 8px var(--color-accent);
-  animation: pulseDot 2s infinite ease-in-out;
+.titlebar-center {
+  flex: 1;
+  max-width: 380px;
 }
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
+.win-search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--win-border-input);
+  border-radius: var(--radius-btn);
+  padding: 4px 10px;
+  gap: 8px;
+  height: 28px;
+  transition: all 0.15s ease;
+}
+
+.win-search-box:focus-within {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--win-accent);
+}
+
+.search-icon {
+  color: var(--win-text-secondary);
+}
+
+.win-search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--win-text-primary);
+  font-family: var(--font-win);
+  font-size: 12px;
+  width: 100%;
+}
+
+.win-search-box input::placeholder {
+  color: var(--win-text-tertiary);
 }
 
 .titlebar-right {
@@ -142,1170 +165,967 @@ body {
   align-items: center;
 }
 
-.win-btn {
+.win-caption-btn {
   background: transparent;
   border: none;
-  color: var(--text-secondary);
-  width: 44px;
-  height: 38px;
+  color: var(--win-text-secondary);
+  width: 46px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.1s ease;
 }
 
-.win-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
+.win-caption-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--win-text-primary);
 }
 
-.win-btn.win-close:hover {
-  background: var(--color-danger);
-  color: #fff;
+.win-caption-btn.win-close:hover {
+  background: var(--win-danger);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
-   Command Bar (Toolbar)
+   Main App Body (Sidebar + Content Pane)
    ========================================================================== */
 
-.command-bar {
-  height: 52px;
-  background: rgba(20, 26, 36, 0.7);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-}
-
-.toolbar-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-main);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  border: 1px solid transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: #0d1117;
-  font-weight: 600;
-}
-.btn-primary:hover {
-  background: #79b8ff;
-  box-shadow: 0 0 12px var(--color-primary-glow);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-primary);
-  border-color: var(--border-subtle);
-}
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--border-bright);
-}
-
-.btn-accent {
-  background: linear-gradient(135deg, #2ea043, #238636);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 8px rgba(35, 134, 54, 0.3);
-}
-.btn-accent:hover {
-  background: linear-gradient(135deg, #3fb950, #2ea043);
-  box-shadow: 0 0 14px var(--color-accent-glow);
-}
-
-.btn-icon {
-  background: transparent;
-  color: var(--text-secondary);
-  border: none;
-  padding: 7px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-.btn-icon:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
-}
-
-.btn-tiny {
-  padding: 3px 8px;
-  font-size: 11px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-.btn-tiny:hover {
-  color: var(--text-primary);
-  border-color: var(--border-bright);
-}
-
-.sparkle {
-  font-size: 14px;
-}
-
-.input-pill {
-  display: flex;
-  align-items: center;
-  background: var(--bg-input);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-pill);
-  padding: 3px 12px;
-  gap: 8px;
-  transition: border-color 0.2s;
-}
-.input-pill:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 10px var(--color-primary-glow);
-}
-
-.input-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-}
-
-.input-pill input {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  width: 120px;
-}
-
-.decimal-badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-primary);
-  background: rgba(88, 166, 255, 0.12);
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-}
-
-/* ==========================================================================
-   Workspace Layout (3-Column Architecture)
-   ========================================================================== */
-
-.workspace-body {
+.win-app-body {
   flex: 1;
   display: grid;
-  grid-template-columns: 210px 1fr 340px;
+  grid-template-columns: 260px 1fr;
   overflow: hidden;
 }
 
-/* Left Rail */
-.sidebar-rail {
-  background: rgba(14, 18, 26, 0.5);
-  border-right: 1px solid var(--border-subtle);
+/* ==========================================================================
+   Left Navigation Pane (Matches Windows 11 Settings Sidebar)
+   ========================================================================== */
+
+.win-nav-pane {
+  background-color: var(--win-bg-nav);
+  border-right: 1px solid var(--win-border-divider);
   display: flex;
   flex-direction: column;
-  padding: 16px 10px;
-  gap: 20px;
+  padding: 14px 8px 12px 8px;
+  gap: 16px;
   overflow-y: auto;
 }
 
-.section-heading {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  color: var(--text-muted);
-  padding: 0 8px 6px;
+.win-profile-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
 }
 
-.nav-list {
+.profile-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--win-text-primary);
+}
+
+.profile-sub {
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+
+.win-nav-menu {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.win-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: var(--radius-btn);
+  color: var(--win-text-primary);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s ease;
+}
+
+.win-nav-item:hover {
+  background-color: var(--win-bg-card-hover);
+}
+
+.win-nav-item.active {
+  background-color: var(--win-bg-card-hover);
+  font-weight: 500;
+}
+
+.nav-active-pill {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 3px;
+  height: 16px;
+  background-color: var(--win-accent);
+  border-radius: 2px;
+}
+
+.win-nav-item.active .nav-active-pill {
+  display: block;
+}
+
+.nav-icon-box {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  color: var(--win-accent);
+  margin-right: 10px;
+}
+
+.win-nav-item.active .nav-icon-box {
+  color: var(--win-accent);
+}
+
+.nav-label {
+  flex: 1;
+}
+
+.nav-footer-status {
+  margin-top: auto;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--win-border-divider);
+}
+
+.engine-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--win-text-secondary);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--win-success);
+}
+.badge-dot.blue {
+  background-color: var(--win-accent);
+}
+
+/* ==========================================================================
+   Content Pane (Windows 11 Settings Right Pane Layout)
+   ========================================================================== */
+
+.win-content-pane {
+  background-color: var(--win-bg-canvas);
+  overflow-y: auto;
+  padding: 24px 36px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.page-header {
+  margin-bottom: 8px;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: var(--win-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.breadcrumb .sep {
+  opacity: 0.4;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--win-text-primary);
+}
+
+/* ==========================================================================
+   Hero Status Card (Exact replica of "You're up to date" Tile)
+   ========================================================================== */
+
+.win-hero-card {
+  background-color: var(--win-bg-card);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: background 0.15s ease;
+}
+
+.win-hero-card:hover {
+  background-color: var(--win-bg-card-hover);
+}
+
+.hero-icon-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.nav-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-}
-.nav-item.active {
-  background: rgba(88, 166, 255, 0.12);
-  color: var(--color-primary);
+.hero-title {
+  font-size: 18px;
   font-weight: 600;
+  color: var(--win-text-primary);
 }
 
-.nav-item .badge {
-  margin-left: auto;
-  font-size: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1px 6px;
-  border-radius: var(--radius-pill);
-}
-
-.template-item {
+.hero-meta {
+  font-size: 12px;
+  color: var(--win-text-secondary);
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 11px;
-  color: var(--text-secondary);
+}
+
+.hero-meta .bullet {
+  opacity: 0.4;
+}
+
+.hero-meta .accent-text {
+  color: var(--win-accent);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Windows 11 Signature Blue Accent Button (Check for updates replica) */
+.win-btn-accent {
+  background-color: var(--win-accent);
+  color: var(--win-accent-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-win);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-.template-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-primary);
-}
-.template-item.active {
-  color: var(--color-accent);
+  transition: all 0.12s ease;
 }
 
-.dot-indicator {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--text-muted);
-}
-.template-item.active .dot-indicator {
-  background: var(--color-accent);
-  box-shadow: 0 0 6px var(--color-accent);
+.win-btn-accent:hover {
+  background-color: var(--win-accent-hover);
+  box-shadow: 0 2px 8px rgba(96, 205, 255, 0.3);
 }
 
-.bottom-pinned {
-  margin-top: auto;
-}
-
-.system-card {
-  background: rgba(18, 24, 34, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 10px;
-}
-.system-card .card-title {
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--text-primary);
-}
-.system-card .card-detail {
-  font-size: 10px;
-  color: var(--text-secondary);
-  margin-top: 3px;
-}
-.text-green {
-  color: var(--color-accent);
-  font-weight: 600;
+.win-btn-accent:active {
+  transform: scale(0.98);
 }
 
 /* ==========================================================================
-   Center Stage: Animation Viewport & Controls
+   Section Headers & Setting Tiles (Windows 11 Settings List Style)
    ========================================================================== */
 
-.stage-container {
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  gap: 12px;
-  overflow: hidden;
-}
-
-/* Player Card */
-.player-card {
-  flex: 1;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.player-header {
-  height: 40px;
-  padding: 0 16px;
-  background: rgba(18, 24, 34, 0.7);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.lesson-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.lesson-title {
-  font-size: 13px;
+.settings-section-title {
+  font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--win-text-primary);
+  margin-top: 14px;
+  margin-bottom: 2px;
 }
 
-.step-pill {
-  font-size: 10px;
-  background: rgba(88, 166, 255, 0.12);
-  color: var(--color-primary);
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-}
-
-.player-resolution {
+/* Individual Row Setting Tile */
+.win-setting-tile {
+  background-color: var(--win-bg-card);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-card);
+  padding: 14px 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 10px;
-  color: var(--text-muted);
+  gap: 16px;
+  transition: background 0.12s ease;
 }
 
-.view-mode-pill {
+.win-setting-tile:hover {
+  background-color: var(--win-bg-card-hover);
+}
+
+.tile-icon {
+  width: 24px;
   display: flex;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--border-subtle);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tile-titles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tile-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--win-text-primary);
+}
+
+.tile-desc {
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+
+/* ==========================================================================
+   Player Expander Card (Host for Video & Canvas)
+   ========================================================================== */
+
+.win-card {
+  background-color: var(--win-bg-card);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.player-expander-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-bar {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--win-border-divider);
+}
+
+.card-icon {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-titles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-main-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--win-text-primary);
+}
+
+.card-sub-title {
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+
+/* Windows 11 Segmented Pill Control */
+.win-segmented-pill {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--win-border-card);
   border-radius: var(--radius-pill);
   padding: 2px;
   gap: 2px;
 }
 
-.view-btn {
+.seg-btn {
   background: transparent;
   border: none;
   border-radius: var(--radius-pill);
-  font-family: var(--font-main);
-  font-size: 10px;
+  font-family: var(--font-win);
+  font-size: 11px;
   font-weight: 500;
-  color: var(--text-secondary);
-  padding: 3px 10px;
+  color: var(--win-text-secondary);
+  padding: 4px 12px;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
 }
 
-.view-btn:hover {
-  color: var(--text-primary);
+.seg-btn:hover {
+  color: var(--win-text-primary);
 }
 
-.view-btn.active {
-  background: var(--color-primary);
-  color: #0d1117;
+.seg-btn.active {
+  background-color: var(--win-bg-subtle);
+  color: var(--win-text-primary);
   font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.res-tag, .lang-tag {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-/* Canvas Viewport */
-.canvas-viewport {
-  flex: 1;
+/* Video Player Viewport */
+.player-body {
   position: relative;
-  background: #0D1117;
-  overflow: hidden;
+  background-color: #000000;
+  min-height: 380px;
+  max-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.canvas-background {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 32px 32px;
+.video-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.animation-stage {
-  position: relative;
-  z-index: 2;
+#manim-player {
+  width: 100%;
+  max-height: 460px;
+  outline: none;
+  background-color: #0D1117;
+}
+
+/* Canvas Mode Styling */
+.canvas-container {
+  width: 100%;
+  height: 380px;
+  background-color: #0D1117;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 820px;
+  position: relative;
 }
 
-.stage-topic-header {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  color: var(--text-primary);
-  opacity: 0.9;
-}
-
-/* Binary Bits Presentation */
-.binary-grid {
+.canvas-stage {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-.bit-card {
-  width: 58px;
-  height: 74px;
-  background: #161B22;
-  border: 2px solid var(--color-primary);
-  border-radius: 10px;
+.canvas-topic {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--win-text-primary);
+}
+
+.binary-bits-row {
+  display: flex;
+  gap: 8px;
+}
+
+.win-bit-box {
+  width: 52px;
+  height: 64px;
+  background-color: #161B22;
+  border: 1px solid var(--win-accent);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
-  color: #fff;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  transition: all 0.2s ease;
 }
 
-.bit-card.active-bit {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 20px var(--color-accent-glow);
+.win-bit-box.active {
+  border-color: var(--win-success);
+  color: var(--win-success);
+  box-shadow: 0 0 12px rgba(46, 160, 67, 0.3);
 }
 
-.bit-card.dimmed-bit {
-  opacity: 0.3;
-  transform: scale(0.95);
-  border-color: rgba(255, 255, 255, 0.1);
+.win-bit-box.dimmed {
+  opacity: 0.35;
 }
 
-/* Place values */
-.place-values-grid {
+.place-values-row {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
-.pv-item {
-  width: 58px;
+.win-pv-item {
+  width: 52px;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+.win-pv-item.active {
+  color: var(--win-success);
   font-weight: 600;
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
 }
 
-.pv-item.active-pv {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-/* Math Equation Output */
-.math-expression-display {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.equation-box {
   background: rgba(22, 27, 34, 0.9);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-md);
-  padding: 10px 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  border: 1px solid var(--win-border-input);
+  border-radius: var(--radius-card);
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.math-expression-display.highlight-final {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 24px var(--color-accent-glow);
+.eq-tag {
+  font-size: 12px;
+  color: var(--win-text-secondary);
 }
 
-.eq-label {
-  font-size: 13px;
-  color: var(--text-secondary);
+.eq-val {
+  font-family: var(--font-mono);
+  font-size: 15px;
   font-weight: 600;
+  color: var(--win-accent);
 }
 
-.eq-content {
-  font-family: var(--font-mono);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.math-expression-display.highlight-final .eq-content {
-  color: var(--color-accent);
-}
-
-/* Subtitle Bar */
-.narration-subtitle-box {
+.canvas-subtitle-bar {
   position: absolute;
-  bottom: 20px;
-  left: 30px;
-  right: 30px;
-  background: rgba(13, 17, 23, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-md);
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.audio-wave-anim {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  height: 18px;
-}
-
-.audio-wave-anim span {
-  width: 3px;
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 2px;
-  animation: wavePulse 1.2s infinite ease-in-out;
-}
-.audio-wave-anim span:nth-child(2) { animation-delay: 0.2s; }
-.audio-wave-anim span:nth-child(3) { animation-delay: 0.4s; }
-.audio-wave-anim span:nth-child(4) { animation-delay: 0.1s; }
-
-@keyframes wavePulse {
-  0%, 100% { height: 4px; }
-  50% { height: 18px; }
-}
-
-.subtitle-text {
-  font-size: 13px;
-  color: #fff;
-  line-height: 1.4;
-}
-
-/* Player Controls Bar */
-.player-controls {
-  height: 48px;
-  background: rgba(20, 26, 36, 0.85);
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  gap: 12px;
-}
-
-.ctl-btn {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.ctl-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--border-bright);
-}
-
-.ctl-btn.small {
-  width: auto;
-  padding: 0 8px;
-  font-size: 11px;
-}
-
-.scrub-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.time-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  min-width: 48px;
-}
-
-#timeline-scrubber {
-  flex: 1;
-  -webkit-appearance: none;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  outline: none;
-}
-#timeline-scrubber::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  cursor: pointer;
-  box-shadow: 0 0 8px var(--color-primary-glow);
-}
-
-.ctl-group-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  bottom: 14px;
+  left: 20px;
+  right: 20px;
+  background: rgba(15, 20, 28, 0.9);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-btn);
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
-   Multi-track Timeline Panel
+   Windows 11 Controls & Inputs
    ========================================================================== */
 
-.timeline-panel {
-  height: 160px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+/* Windows 11 Secondary Button */
+.win-btn-secondary {
+  background-color: var(--win-bg-subtle);
+  color: var(--win-text-primary);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-win);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.1s ease;
 }
 
-.timeline-header {
-  height: 32px;
-  padding: 0 12px;
-  background: rgba(18, 24, 34, 0.7);
-  border-bottom: 1px solid var(--border-subtle);
+.win-btn-secondary:hover {
+  background-color: var(--win-bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Windows 11 Input Field Group */
+.win-input-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--win-border-input);
+  border-radius: var(--radius-btn);
+  padding: 3px 10px;
+  gap: 8px;
 }
 
-.timeline-title-area {
+.win-input-group:focus-within {
+  border-color: var(--win-accent);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.input-prefix {
+  font-size: 11px;
+  color: var(--win-text-secondary);
+  font-weight: 600;
+}
+
+.win-input-group input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--win-accent);
+  letter-spacing: 1.5px;
+  width: 100px;
+}
+
+.input-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--win-success);
+  background: rgba(46, 160, 67, 0.15);
+  padding: 1px 6px;
+  border-radius: var(--radius-btn);
+}
+
+/* Windows 11 Toggle Switch */
+.win-toggle-switch {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
-  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
 }
 
-.overlap-shield {
-  font-size: 10px;
-  color: var(--color-accent);
-  background: rgba(126, 231, 135, 0.1);
-  padding: 1px 8px;
+.win-toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  width: 40px;
+  height: 20px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius-pill);
+  position: relative;
+  transition: all 0.15s ease;
 }
 
-.timeline-actions {
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--win-text-secondary);
+  transition: all 0.15s ease;
+}
+
+.win-toggle-switch input:checked + .toggle-slider {
+  background-color: var(--win-accent);
+  border-color: var(--win-accent);
+}
+
+.win-toggle-switch input:checked + .toggle-slider::after {
+  transform: translateX(20px);
+  background-color: #000000;
+}
+
+.toggle-state-text {
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+
+/* Windows 11 Action Chips */
+.win-chip-group {
   display: flex;
   gap: 6px;
 }
 
-.timeline-viewport {
-  flex: 1;
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 8px 12px;
+.win-chip {
+  background-color: var(--win-bg-subtle);
+  border: 1px solid var(--win-border-card);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-win);
+  font-size: 12px;
+  color: var(--win-text-secondary);
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.win-chip:hover {
+  background-color: var(--win-bg-card-hover);
+  color: var(--win-text-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Timeline Card & Tracks
+   ========================================================================== */
+
+.timeline-card {
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
 
-.time-ruler {
-  height: 18px;
+.timeline-header-meta {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-left: 90px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--text-muted);
 }
 
-.track-row {
+.track-legend {
   display: flex;
-  align-items: center;
-  height: 36px;
-  gap: 10px;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--win-text-secondary);
 }
 
-.track-label {
-  width: 80px;
+.legend-item {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-secondary);
 }
 
-.track-lane {
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.legend-color.blue { background-color: rgba(96, 205, 255, 0.4); border: 1px solid var(--win-accent); }
+.legend-color.green { background-color: rgba(46, 160, 67, 0.4); border: 1px solid var(--win-success); }
+
+.timeline-total {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--win-text-secondary);
+}
+
+.timeline-tracks-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 32px;
+}
+
+.row-tag {
+  width: 60px;
+  font-size: 11px;
+  color: var(--win-text-secondary);
+  font-weight: 500;
+}
+
+.row-lane {
   flex: 1;
   height: 100%;
   position: relative;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius-sm);
-  border: 1px dashed rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--win-border-divider);
 }
 
-.event-block {
+.win-timeline-block {
   position: absolute;
   top: 3px;
   bottom: 3px;
-  border-radius: 4px;
-  padding: 2px 8px;
+  border-radius: 3px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: center;
+  padding: 0 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.event-block.visual-event {
-  background: rgba(88, 166, 255, 0.2);
-  border: 1px solid var(--color-primary);
-  color: #c9d1d9;
-}
-.event-block.visual-event:hover, .event-block.visual-event.active {
-  background: rgba(88, 166, 255, 0.35);
-  box-shadow: 0 0 10px var(--color-primary-glow);
+.win-timeline-block.visual {
+  background-color: rgba(96, 205, 255, 0.18);
+  border: 1px solid var(--win-accent);
+  color: #D6E4FF;
 }
 
-.event-block.narration-event {
-  background: rgba(126, 231, 135, 0.2);
-  border: 1px solid var(--color-accent);
-  color: #7ee787;
-}
-.event-block.narration-event:hover, .event-block.narration-event.active {
-  background: rgba(126, 231, 135, 0.35);
-  box-shadow: 0 0 10px var(--color-accent-glow);
-}
-
-.playhead {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 90px;
-  width: 2px;
-  background: #ff7b72;
-  pointer-events: none;
-  z-index: 10;
-  transition: left 0.08s linear;
-}
-
-.playhead-handle {
-  width: 10px;
-  height: 10px;
-  background: #ff7b72;
-  position: absolute;
-  top: 0;
-  left: -4px;
-  transform: rotate(45deg);
+.win-timeline-block.audio {
+  background-color: rgba(46, 160, 67, 0.18);
+  border: 1px solid var(--win-success);
+  color: #BCF0DA;
 }
 
 /* ==========================================================================
-   Right Sidebar: AI Copilot & Inspector
+   Windows 11 Statusbar
    ========================================================================== */
 
-.sidebar-copilot {
-  background: rgba(14, 18, 26, 0.6);
-  border-left: 1px solid var(--border-subtle);
-  display: flex;
-  flex-direction: column;
-  padding: 14px;
-  gap: 14px;
-  overflow-y: auto;
-}
-
-.copilot-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.copilot-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.model-badge {
-  font-size: 10px;
-  color: var(--color-purple);
-  background: rgba(210, 168, 255, 0.12);
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-}
-
-.inspector-card {
-  background: rgba(22, 28, 38, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.inspector-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 6px;
-}
-
-.prop-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.prop-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.prop-input, .prop-textarea {
-  background: var(--bg-input);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-family: var(--font-main);
-  font-size: 12px;
-  padding: 6px 8px;
-  outline: none;
-  transition: border-color 0.15s ease;
-}
-.prop-input:focus, .prop-textarea:focus {
-  border-color: var(--color-primary);
-}
-
-.prop-textarea {
-  resize: vertical;
-  line-height: 1.4;
-}
-
-.prop-textarea.phonetic {
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-
-.input-with-unit {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.input-with-unit input {
-  flex: 1;
-}
-.input-with-unit span {
-  font-size: 11px;
-  color: var(--text-secondary);
-}
-
-.full-width {
-  width: 100%;
-  justify-content: center;
-}
-
-/* AI Chips */
-.chip-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.ai-chip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  padding: 4px 10px;
-  font-size: 11px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.ai-chip:hover {
-  background: rgba(88, 166, 255, 0.15);
-  border-color: var(--color-primary);
-  color: var(--text-primary);
-}
-
-/* Copilot Chat */
-.copilot-chat {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.chat-logs {
-  background: rgba(16, 20, 28, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 10px;
-  max-height: 140px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.chat-msg {
-  font-size: 11px;
-  line-height: 1.4;
-}
-.chat-msg.ai .msg-sender {
-  color: var(--color-purple);
-  font-weight: 600;
-  margin-right: 4px;
-}
-
-.chat-input-bar {
-  display: flex;
-  gap: 6px;
-}
-
-.chat-input-bar input {
-  flex: 1;
-  background: var(--bg-input);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 11px;
-  padding: 6px 8px;
-  outline: none;
-}
-.chat-input-bar input:focus {
-  border-color: var(--color-primary);
-}
-
-.btn-send {
-  background: var(--color-primary);
-  color: #0d1117;
-  border: none;
-  border-radius: var(--radius-sm);
-  width: 30px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-/* ==========================================================================
-   Bottom Status Bar
-   ========================================================================== */
-
-.app-statusbar {
+.win-statusbar {
   height: 28px;
-  background: rgba(14, 18, 24, 0.85);
-  border-top: 1px solid var(--border-subtle);
+  background-color: #202020;
+  border-top: 1px solid var(--win-border-divider);
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--win-text-secondary);
+  user-select: none;
 }
 
 .status-left, .status-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.status-separator {
-  color: rgba(255, 255, 255, 0.1);
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.bullet-green {
-  color: var(--color-accent);
-  margin-right: 3px;
+.dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--win-success);
+}
+
+.status-div {
+  width: 1px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
-   Modal Dialogs
+   Modal Dialog (Windows 11 Dialog Standard)
    ========================================================================== */
 
-.modal-overlay {
+.win-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
-.modal-overlay.open {
+.win-modal-overlay.open {
   display: flex;
 }
 
-.modal-window {
-  width: 520px;
-  background: #161B22;
-  border: 1px solid var(--border-bright);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-window);
+.win-modal-dialog {
+  width: 480px;
+  background-color: #2B2B2B;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-window);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
-.modal-header {
-  height: 48px;
-  background: rgba(22, 28, 38, 0.8);
-  border-bottom: 1px solid var(--border-subtle);
+.modal-title-bar {
+  height: 38px;
   padding: 0 16px;
+  background-color: #262626;
+  border-bottom: 1px solid var(--win-border-divider);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.modal-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
+.modal-caption {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--win-text-primary);
 }
 
-.modal-close {
+.modal-close-btn {
   background: transparent;
   border: none;
-  color: var(--text-secondary);
-  font-size: 14px;
+  color: var(--win-text-secondary);
   cursor: pointer;
+  padding: 4px;
 }
 
-.modal-body {
+.modal-contents {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-.modal-section h3 {
-  font-size: 12px;
+.modal-section-h {
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text-primary);
 }
 
-.checklist {
+.modal-checks {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.check-item {
-  font-size: 12px;
+.check-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--text-secondary);
-}
-
-.badge-check {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.radio-label {
-  display: flex;
-  align-items: flex-start;
   gap: 10px;
-  padding: 10px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.02);
-  cursor: pointer;
-}
-.radio-label.active {
-  border-color: var(--color-primary);
-  background: rgba(88, 166, 255, 0.08);
-}
-.radio-label strong {
   font-size: 12px;
-  color: var(--text-primary);
-}
-.radio-label p {
-  font-size: 11px;
-  color: var(--text-secondary);
-  margin-top: 2px;
+  color: var(--win-text-secondary);
 }
 
-.render-progress {
+.modal-render-bar {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
-.progress-bar {
-  height: 6px;
+.win-prog-track {
+  height: 4px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
-.progress-fill {
+.win-prog-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  width: 0%;
+  background-color: var(--win-accent);
   transition: width 0.3s ease;
 }
 
-.progress-status {
+.prog-text {
   font-size: 11px;
-  color: var(--color-accent);
+  color: var(--win-accent);
   font-family: var(--font-mono);
 }
 
-.modal-footer {
-  height: 52px;
-  background: rgba(20, 26, 36, 0.7);
-  border-top: 1px solid var(--border-subtle);
+.modal-actions {
+  height: 48px;
+  background-color: #242424;
+  border-top: 1px solid var(--win-border-divider);
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  padding: 0 16px;
 }
