@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ManimPilot.AI/ManimPilot.AI.csproj" />
+    <Project Path="src/ManimPilot.App/ManimPilot.App.csproj" />
+    <Project Path="src/ManimPilot.Audio/ManimPilot.Audio.csproj" />
+    <Project Path="src/ManimPilot.Core/ManimPilot.Core.csproj" />
+    <Project Path="src/ManimPilot.Math/ManimPilot.Math.csproj" />
+    <Project Path="src/ManimPilot.Rendering/ManimPilot.Rendering.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ManimPilot.Tests/ManimPilot.Tests.csproj" />
+  </Folder>
+</Solution>

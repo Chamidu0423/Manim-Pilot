@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ManimPilot.Core\ManimPilot.Core.csproj" />
+    <ProjectReference Include="..\ManimPilot.Math\ManimPilot.Math.csproj" />
+    <ProjectReference Include="..\ManimPilot.Audio\ManimPilot.Audio.csproj" />
+    <ProjectReference Include="..\ManimPilot.Rendering\ManimPilot.Rendering.csproj" />
+    <ProjectReference Include="..\ManimPilot.AI\ManimPilot.AI.csproj" />
+  </ItemGroup>
+
+</Project>

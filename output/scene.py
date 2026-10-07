@@ -1,7 +1,7 @@
 # ==============================================================================
-# EduMotion Studio - Automatically Generated Manim Scene Script
-# Lesson: ද්විමය සංඛ්‍යා දශම බවට හැරවීම (10110110) (ID: 3a65e9dc772f4c55bb85b4d1af1a356c)
-# Generated at: 2026-10-07 15:12:40 UTC
+# ManimPilot Studio - Automatically Generated Manim Scene Script
+# Lesson: ද්විමය සංඛ්‍යා දශම බවට හැරවීම (10110110) (ID: bea2c7ec910c469fa9fb6e5137eb9cc7)
+# Generated at: 2026-10-07 17:32:21 UTC
 # ==============================================================================
 from manim import *
 import numpy as np
@@ -11,7 +11,7 @@ config.pixel_height = 1080
 config.frame_rate = 30
 config.background_color = "#0D1117"
 
-class EduMotionLessonScene(Scene):
+class ManimPilotLessonScene(Scene):
     def construct(self):
         # Global styling colors
         COLOR_PRIMARY = "#58A6FF"

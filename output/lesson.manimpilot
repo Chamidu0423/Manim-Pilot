@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "metadata": {
+    "name": "\u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF \u0DAF\u0DC1\u0DB8 \u0DB6\u0DC0\u0DA7 \u0DC4\u0DD0\u0DBB\u0DC0\u0DD3\u0DB8 (10110110)",
+    "author": "ManimPilot User",
+    "created_at": "2026-10-07T17:32:21.3767823Z",
+    "updated_at": "2026-10-07T17:32:21.3780101Z",
+    "tags": []
+  },
+  "lesson": {
+    "id": "bea2c7ec910c469fa9fb6e5137eb9cc7",
+    "title": "\u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF \u0DAF\u0DC1\u0DB8 \u0DB6\u0DC0\u0DA7 \u0DC4\u0DD0\u0DBB\u0DC0\u0DD3\u0DB8 (10110110)",
+    "topic": "BinaryToDecimal",
+    "language": "si-LK",
+    "description": "10110110 \u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DBA\u0DD9\u0DB1\u0DCA 182 \u0DAF\u0DC1\u0DB8 \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0DB6\u0DC0\u0DA7 \u0DB4\u0DAD\u0DCA \u0D9A\u0DBB\u0DB1 \u0D86\u0D9A\u0DCF\u0DBB\u0DBA.",
+    "steps": [
+      {
+        "id": "step_01",
+        "order_index": 1,
+        "title": "\u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0D89\u0DAF\u0DD2\u0DBB\u0DD2\u0DB4\u0DAD\u0DCA \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8",
+        "type": "show_binary",
+        "duration": 7.06,
+        "visual": {
+          "binary": "10110110",
+          "highlight_color": "#FFD700",
+          "custom_props": {}
+        },
+        "narration": {
+          "text": "\u0D85\u0DB4\u0DD2\u0DA7 \u0DAF\u0DD3\u0DBD\u0DCF \u0DAD\u0DD2\u0DBA\u0DD9\u0DB1\u0DCA\u0DB1\u0DDA 10110110 \u0D9A\u0DD2\u0DBA\u0DB1 binary \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0\u0DBA\u0DD2. \u0D85\u0DB4\u0DD2 \u0DAF\u0DD0\u0DB1\u0DCA \u0DB8\u0DD9\u0DBA \u0DAF\u0DC1\u0DB8 \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0\u0D9A\u0DCA \u0DB6\u0DC0\u0DA7 \u0DC4\u0DBB\u0DC0\u0DB8\u0DD4.",
+          "spoken_text": "\u0D85\u0DB4\u0DD2\u0DA7 \u0DAF\u0DD3\u0DBD\u0DCF \u0DAD\u0DD2\u0DBA\u0DD9\u0DB1\u0DCA\u0DB1\u0DDA \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0, \u0D91\u0D9A, \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0, \u0D91\u0D9A, \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0 \u0D9A\u0DD2\u0DBA\u0DB1 \u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0\u0DBA\u0DD2.",
+          "anchor": "step_01_binary_shown",
+          "timing": "AfterEvent",
+          "offset_seconds": 0.3,
+          "audio_duration": 6.46
+        }
+      },
+      {
+        "id": "step_02",
+        "order_index": 2,
+        "title": "\u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DAF\u0DD0\u0D9A\u0DCA\u0DC0\u0DD3\u0DB8",
+        "type": "show_place_values",
+        "duration": 5.68,
+        "visual": {
+          "binary": "10110110",
+          "place_values": [
+            128,
+            64,
+            32,
+            16,
+            8,
+            4,
+            2,
+            1
+          ],
+          "highlight_color": "#FFD700",
+          "custom_props": {}
+        },
+        "narration": {
+          "text": "\u0DAF\u0D9A\u0DD4\u0DAB\u0DDA \u0DC3\u0DD2\u0DA7 \u0DC0\u0DB8\u0DA7 \u0DAF\u0DD9\u0D9A\u0DD9\u0DC4\u0DD2 \u0DB6\u0DBD\u0DBA\u0DB1\u0DCA \u0D85\u0DB1\u0DD4\u0DC0 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DD2\u0DC5\u0DD2\u0DC0\u0DD9\u0DC5\u0DD2\u0DB1\u0DCA \u0DBD\u0DD2\u0DBA\u0DCF \u0D9C\u0DB1\u0DD2\u0DB8\u0DD4.",
+          "spoken_text": "\u0DAF\u0D9A\u0DD4\u0DAB\u0DDA \u0DC3\u0DD2\u0DA7 \u0DC0\u0DB8\u0DA7 \u0DAF\u0DD9\u0D9A\u0DDA \u0DB6\u0DBD\u0DBA\u0DB1\u0DCA \u0D85\u0DB1\u0DD4\u0DC0 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DD2\u0DC5\u0DD2\u0DC0\u0DD9\u0DC5\u0DD2\u0DB1\u0DCA \u0DC3\u0DA7\u0DC4\u0DB1\u0DCA \u0D9A\u0DBB\u0DB8\u0DD4.",
+          "anchor": "step_02_pv_shown",
+          "timing": "AfterEvent",
+          "offset_seconds": 0.3,
+          "audio_duration": 5.08
+        }
+      },
+      {
+        "id": "step_03",
+        "order_index": 3,
+        "title": "\u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1 \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8",
+        "type": "select_bits",
+        "duration": 6.6,
+        "visual": {
+          "binary": "10110110",
+          "place_values": [
+            128,
+            64,
+            32,
+            16,
+            8,
+            4,
+            2,
+            1
+          ],
+          "active_indices": [
+            0,
+            2,
+            3,
+            5,
+            6
+          ],
+          "highlight_color": "#7EE787",
+          "custom_props": {}
+        },
+        "narration": {
+          "text": "\u0DB8\u0DD9\u0DC4\u0DD2 \u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DC0\u0DBD\u0DA7 \u0D85\u0DAF\u0DCF\u0DC5 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DB8\u0DAB\u0D9A\u0DCA \u0D85\u0DB4\u0DD2 \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DA7 \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DB1\u0DCA\u0DB1\u0DC0\u0DCF.",
+          "spoken_text": "\u0DB8\u0DD9\u0DC4\u0DD2 \u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DC0\u0DBD\u0DA7 \u0D85\u0DAF\u0DCF\u0DC5 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DB8\u0DAB\u0D9A\u0DCA \u0D85\u0DB4\u0DD2 \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8 \u0DC3\u0DB3\u0DC4\u0DCF \u0DC0\u0DD9\u0DB1\u0DCA \u0D9A\u0DBB\u0D9C\u0DB1\u0DCA\u0DB1\u0DC0\u0DCF.",
+          "anchor": "step_03_active_highlight",
+          "timing": "AfterEvent",
+          "offset_seconds": 0.3,
+          "audio_duration": 6
+        }
+      },
+      {
+        "id": "step_04",
+        "order_index": 4,
+        "title": "\u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DDA \u0DB4\u0DCA\u200D\u0DBB\u0D9A\u0DCF\u0DC1\u0DB1\u0DBA",
+        "type": "addition_expression",
+        "duration": 7.52,
+        "visual": {
+          "binary": "10110110",
+          "expression": "128 \u002B 32 \u002B 16 \u002B 4 \u002B 2",
+          "highlight_color": "#FFD700",
+          "custom_props": {}
+        },
+        "narration": {
+          "text": "\u0DAF\u0DD0\u0DB1\u0DCA \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DAD\u0DCA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DC0\u0DB1 128 \u002B 32 \u002B 16 \u002B 4 \u002B 2 \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DBB\u0DB8\u0DD4.",
+          "spoken_text": "\u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0DC0\u0DD2\u0DC3\u0DD2 \u0D85\u0DA7, \u0DAD\u0DD2\u0DC3\u0DCA \u0DAF\u0DD9\u0D9A, \u0DAF\u0DC4\u0DC3\u0DBA, \u0DC4\u0DAD\u0DBB \u0DC3\u0DC4 \u0DAF\u0DD9\u0D9A \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DC5 \u0DC0\u0DD2\u0DA7 \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB \u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0D85\u0DC3\u0DD6 \u0DAF\u0DD9\u0D9A \u0DBD\u0DD9\u0DC3 \u0DBD\u0DD0\u0DB6\u0DD9\u0DB1\u0DC0\u0DCF.",
+          "anchor": "step_04_expr_shown",
+          "timing": "AfterEvent",
+          "offset_seconds": 0.3,
+          "audio_duration": 6.92
+        }
+      },
+      {
+        "id": "step_05",
+        "order_index": 5,
+        "title": "\u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB",
+        "type": "final_answer",
+        "duration": 4,
+        "visual": {
+          "binary": "10110110",
+          "expression": "128 \u002B 32 \u002B 16 \u002B 4 \u002B 2",
+          "result": "182",
+          "highlight_color": "#FFD700",
+          "custom_props": {}
+        },
+        "narration": {
+          "text": "\u0D91\u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0D85\u0DB4\u0DA7 \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB \u0DBD\u0DD9\u0DC3 182 \u0DBD\u0DD0\u0DB6\u0DD9\u0DB1\u0DC0\u0DCF.",
+          "spoken_text": "\u0D91\u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0D85\u0DB4\u0DA7 \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB \u0DBD\u0DD9\u0DC3 \u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0D85\u0DC3\u0DD6 \u0DAF\u0DD9\u0D9A \u0DBD\u0DD0\u0DB6\u0DD9\u0DB1\u0DC0\u0DCF.",
+          "anchor": "step_05_answer_highlight",
+          "timing": "AfterEvent",
+          "offset_seconds": 0.3,
+          "audio_duration": 3.23
+        }
+      }
+    ],
+    "settings": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "font_name": "Segoe UI",
+      "sinhala_font": "Iskoola Pota",
+      "background_color": "#0D1117",
+      "primary_color": "#58A6FF",
+      "accent_color": "#7EE787",
+      "text_color": "#F0F6FC"
+    }
+  },
+  "timeline": {
+    "tracks": [
+      {
+        "name": "Visual Track",
+        "track_type": "Visual",
+        "events": [
+          {
+            "id": "c800a8a4d82149c18a3f33a12215d4f1",
+            "step_id": "step_01",
+            "title": "\u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0D89\u0DAF\u0DD2\u0DBB\u0DD2\u0DB4\u0DAD\u0DCA \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8 (Visual)",
+            "track_type": "Visual",
+            "start_time": 0,
+            "end_time": 7.06,
+            "duration": 7.06,
+            "anchor_id": "step_01_binary_shown",
+            "payload": "show_binary"
+          },
+          {
+            "id": "a9937693e6f54c3ba41f2dd674044fdf",
+            "step_id": "step_02",
+            "title": "\u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DAF\u0DD0\u0D9A\u0DCA\u0DC0\u0DD3\u0DB8 (Visual)",
+            "track_type": "Visual",
+            "start_time": 7.16,
+            "end_time": 12.84,
+            "duration": 5.68,
+            "anchor_id": "step_02_pv_shown",
+            "payload": "show_place_values"
+          },
+          {
+            "id": "55ecf30e7fdb4616bedf1771fe15c226",
+            "step_id": "step_03",
+            "title": "\u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1 \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8 (Visual)",
+            "track_type": "Visual",
+            "start_time": 12.940000000000001,
+            "end_time": 19.54,
+            "duration": 6.599999999999998,
+            "anchor_id": "step_03_active_highlight",
+            "payload": "select_bits"
+          },
+          {
+            "id": "2e125ec3ccc449e4806b8feb0c97642f",
+            "step_id": "step_04",
+            "title": "\u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DDA \u0DB4\u0DCA\u200D\u0DBB\u0D9A\u0DCF\u0DC1\u0DB1\u0DBA (Visual)",
+            "track_type": "Visual",
+            "start_time": 19.64,
+            "end_time": 27.16,
+            "duration": 7.52,
+            "anchor_id": "step_04_expr_shown",
+            "payload": "addition_expression"
+          },
+          {
+            "id": "cfcc282010db4b2fbe07f8606b45fd3c",
+            "step_id": "step_05",
+            "title": "\u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB (Visual)",
+            "track_type": "Visual",
+            "start_time": 27.26,
+            "end_time": 31.26,
+            "duration": 4,
+            "anchor_id": "step_05_answer_highlight",
+            "payload": "final_answer"
+          }
+        ]
+      },
+      {
+        "name": "Narration Track",
+        "track_type": "Narration",
+        "events": [
+          {
+            "id": "0c1b6ed047a5468693a73167e9d29575",
+            "step_id": "step_01",
+            "title": "\u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0D89\u0DAF\u0DD2\u0DBB\u0DD2\u0DB4\u0DAD\u0DCA \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8 (Speech)",
+            "track_type": "Narration",
+            "start_time": 0.3,
+            "end_time": 6.76,
+            "duration": 6.46,
+            "anchor_id": "step_01_binary_shown",
+            "payload": "\u0D85\u0DB4\u0DD2\u0DA7 \u0DAF\u0DD3\u0DBD\u0DCF \u0DAD\u0DD2\u0DBA\u0DD9\u0DB1\u0DCA\u0DB1\u0DDA \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0, \u0D91\u0D9A, \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0, \u0D91\u0D9A, \u0D91\u0D9A, \u0DB6\u0DD2\u0D82\u0DAF\u0DD4\u0DC0 \u0D9A\u0DD2\u0DBA\u0DB1 \u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0\u0DBA\u0DD2."
+          },
+          {
+            "id": "d41d26e78f3b42e0ae88f32cbcb036e7",
+            "step_id": "step_02",
+            "title": "\u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DAF\u0DD0\u0D9A\u0DCA\u0DC0\u0DD3\u0DB8 (Speech)",
+            "track_type": "Narration",
+            "start_time": 7.46,
+            "end_time": 12.54,
+            "duration": 5.079999999999999,
+            "anchor_id": "step_02_pv_shown",
+            "payload": "\u0DAF\u0D9A\u0DD4\u0DAB\u0DDA \u0DC3\u0DD2\u0DA7 \u0DC0\u0DB8\u0DA7 \u0DAF\u0DD9\u0D9A\u0DDA \u0DB6\u0DBD\u0DBA\u0DB1\u0DCA \u0D85\u0DB1\u0DD4\u0DC0 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DD2\u0DC5\u0DD2\u0DC0\u0DD9\u0DC5\u0DD2\u0DB1\u0DCA \u0DC3\u0DA7\u0DC4\u0DB1\u0DCA \u0D9A\u0DBB\u0DB8\u0DD4."
+          },
+          {
+            "id": "0d4e1efaa5ae48cfaef58b2384cb7fe4",
+            "step_id": "step_03",
+            "title": "\u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1 \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8 (Speech)",
+            "track_type": "Narration",
+            "start_time": 13.240000000000002,
+            "end_time": 19.240000000000002,
+            "duration": 6,
+            "anchor_id": "step_03_active_highlight",
+            "payload": "\u0DB8\u0DD9\u0DC4\u0DD2 \u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DC0\u0DBD\u0DA7 \u0D85\u0DAF\u0DCF\u0DC5 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DB4\u0DB8\u0DAB\u0D9A\u0DCA \u0D85\u0DB4\u0DD2 \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8 \u0DC3\u0DB3\u0DC4\u0DCF \u0DC0\u0DD9\u0DB1\u0DCA \u0D9A\u0DBB\u0D9C\u0DB1\u0DCA\u0DB1\u0DC0\u0DCF."
+          },
+          {
+            "id": "0e955629e5a34c589cdd13caf3ade1be",
+            "step_id": "step_04",
+            "title": "\u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DDA \u0DB4\u0DCA\u200D\u0DBB\u0D9A\u0DCF\u0DC1\u0DB1\u0DBA (Speech)",
+            "track_type": "Narration",
+            "start_time": 19.94,
+            "end_time": 26.86,
+            "duration": 6.919999999999998,
+            "anchor_id": "step_04_expr_shown",
+            "payload": "\u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0DC0\u0DD2\u0DC3\u0DD2 \u0D85\u0DA7, \u0DAD\u0DD2\u0DC3\u0DCA \u0DAF\u0DD9\u0D9A, \u0DAF\u0DC4\u0DC3\u0DBA, \u0DC4\u0DAD\u0DBB \u0DC3\u0DC4 \u0DAF\u0DD9\u0D9A \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DC5 \u0DC0\u0DD2\u0DA7 \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB \u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0D85\u0DC3\u0DD6 \u0DAF\u0DD9\u0D9A \u0DBD\u0DD9\u0DC3 \u0DBD\u0DD0\u0DB6\u0DD9\u0DB1\u0DC0\u0DCF."
+          },
+          {
+            "id": "15301f65cf1e4dae81aa07e08e071950",
+            "step_id": "step_05",
+            "title": "\u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB (Speech)",
+            "track_type": "Narration",
+            "start_time": 27.560000000000002,
+            "end_time": 30.790000000000003,
+            "duration": 3.2300000000000004,
+            "anchor_id": "step_05_answer_highlight",
+            "payload": "\u0D91\u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0D85\u0DB4\u0DA7 \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB \u0DBD\u0DD9\u0DC3 \u0D91\u0D9A\u0DC3\u0DD2\u0DBA \u0D85\u0DC3\u0DD6 \u0DAF\u0DD9\u0D9A \u0DBD\u0DD0\u0DB6\u0DD9\u0DB1\u0DC0\u0DCF."
+          }
+        ]
+      },
+      {
+        "name": "Markers",
+        "track_type": "Marker",
+        "events": [
+          {
+            "id": "cf141ff4a115435695c33387d95673bf",
+            "step_id": "step_01",
+            "title": "Step: \u0DAF\u0DCA\u0DC0\u0DD2\u0DB8\u0DBA \u0DC3\u0D82\u0D9B\u0DCA\u200D\u0DBA\u0DCF\u0DC0 \u0D89\u0DAF\u0DD2\u0DBB\u0DD2\u0DB4\u0DAD\u0DCA \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8",
+            "track_type": "Marker",
+            "start_time": 0,
+            "end_time": 7.16,
+            "duration": 7.16,
+            "payload": "step_01"
+          },
+          {
+            "id": "ebadc052d3df4c9db16d93230e6a055c",
+            "step_id": "step_02",
+            "title": "Step: \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1\u0DD3\u0DBA \u0D85\u0D9C\u0DBA\u0DB1\u0DCA \u0DAF\u0DD0\u0D9A\u0DCA\u0DC0\u0DD3\u0DB8",
+            "track_type": "Marker",
+            "start_time": 7.16,
+            "end_time": 12.940000000000001,
+            "duration": 5.780000000000001,
+            "payload": "step_02"
+          },
+          {
+            "id": "5f8844a773f547b197f50c681f7ac5bd",
+            "step_id": "step_03",
+            "title": "Step: \u0D85\u0D9C\u0DBA \u0D91\u0D9A \u0DC0\u0DB1 \u0DC3\u0DCA\u0DAE\u0DCF\u0DB1 \u0DAD\u0DDD\u0DBB\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8",
+            "track_type": "Marker",
+            "start_time": 12.940000000000001,
+            "end_time": 19.64,
+            "duration": 6.699999999999999,
+            "payload": "step_03"
+          },
+          {
+            "id": "1b00cc6784ad42aaa2c419734ce0d0cb",
+            "step_id": "step_04",
+            "title": "Step: \u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DDA \u0DB4\u0DCA\u200D\u0DBB\u0D9A\u0DCF\u0DC1\u0DB1\u0DBA",
+            "track_type": "Marker",
+            "start_time": 19.64,
+            "end_time": 27.26,
+            "duration": 7.620000000000001,
+            "payload": "step_04"
+          },
+          {
+            "id": "bd3d0263d33a4ad28e4623c2a38fcf91",
+            "step_id": "step_05",
+            "title": "Step: \u0D85\u0DC0\u0DC3\u0DCF\u0DB1 \u0DB4\u0DD2\u0DC5\u0DD2\u0DAD\u0DD4\u0DBB",
+            "track_type": "Marker",
+            "start_time": 27.26,
+            "end_time": 31.26,
+            "duration": 4,
+            "payload": "step_05"
+          }
+        ]
+      }
+    ],
+    "total_duration": 31.26
+  },
+  "build_settings": {}
+}
