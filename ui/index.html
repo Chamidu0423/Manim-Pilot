@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManimPilot Studio — AI Mathematical Animation Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- App Container (Windows 11 Mica Window Frame) -->
+  <div class="window-shell">
+    
+    <!-- Titlebar -->
+    <header class="titlebar" id="app-titlebar">
+      <div class="titlebar-left">
+        <div class="app-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z" fill="url(#brandGrad)"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#58A6FF"/>
+                <stop offset="1" stop-color="#7EE787"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="app-title">ManimPilot Studio</span>
+        <span class="project-tag">BinaryToDecimal.manimpilot</span>
+      </div>
+
+      <div class="titlebar-center">
+        <div class="quick-status">
+          <span class="status-dot"></span>
+          <span class="status-text">AI Ready (Gemini 2.0 Flash)</span>
+        </div>
+      </div>
+
+      <div class="titlebar-right">
+        <button class="win-btn" title="Minimize">─</button>
+        <button class="win-btn" title="Maximize">□</button>
+        <button class="win-btn win-close" title="Close">✕</button>
+      </div>
+    </header>
+
+    <!-- Global Command Bar -->
+    <nav class="command-bar" aria-label="Main Toolbar">
+      <div class="toolbar-group">
+        <button class="btn btn-primary" id="btn-new-lesson">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>New Lesson</span>
+        </button>
+        <button class="btn btn-secondary" id="btn-generate-ai">
+          <span class="sparkle">✨</span>
+          <span>Generate Lesson</span>
+        </button>
+        <button class="btn btn-secondary" id="btn-verify-math">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Verify Math</span>
+        </button>
+      </div>
+
+      <div class="toolbar-center">
+        <div class="input-pill">
+          <span class="input-label">Binary:</span>
+          <input type="text" id="binary-input" value="10110110" maxlength="16" spellcheck="false" title="Enter binary number">
+          <span class="decimal-badge" id="decimal-preview">= 182</span>
+        </div>
+      </div>
+
+      <div class="toolbar-group">
+        <button class="btn btn-accent" id="btn-render-modal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Render Manim</span>
+        </button>
+        <button class="btn btn-icon" id="btn-settings" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Workspace Layout -->
+    <main class="workspace-body">
+      
+      <!-- Left Rail: Projects & Templates -->
+      <aside class="sidebar-rail" id="nav-rail">
+        <div class="rail-section">
+          <div class="section-heading">WORKSPACE</div>
+          <ul class="nav-list">
+            <li class="nav-item active" data-view="editor">
+              <span class="nav-icon">🎬</span>
+              <span class="nav-text">Studio Editor</span>
+            </li>
+            <li class="nav-item" data-view="timeline">
+              <span class="nav-icon">⏱️</span>
+              <span class="nav-text">Timeline & Sync</span>
+            </li>
+            <li class="nav-item" data-view="queue">
+              <span class="nav-icon">🚀</span>
+              <span class="nav-text">Render Queue</span>
+              <span class="badge">1</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rail-section">
+          <div class="section-heading">TEMPLATES</div>
+          <ul class="nav-list small">
+            <li class="template-item active" data-type="bin2dec">
+              <span class="dot-indicator"></span>
+              <span>Binary → Decimal</span>
+            </li>
+            <li class="template-item" data-type="dec2bin">
+              <span class="dot-indicator"></span>
+              <span>Decimal → Binary</span>
+            </li>
+            <li class="template-item" data-type="fractions">
+              <span class="dot-indicator"></span>
+              <span>Fractions Visualizer</span>
+            </li>
+            <li class="template-item" data-type="algebra">
+              <span class="dot-indicator"></span>
+              <span>Algebra Equations</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rail-section bottom-pinned">
+          <div class="system-card">
+            <div class="card-title">Engine Status</div>
+            <div class="card-detail">Manim Community: <span class="text-green">Ready</span></div>
+            <div class="card-detail">Math Verifier: <span class="text-green">Verified ✓</span></div>
+            <div class="card-detail">Voice Sync: <span class="text-green">0 Overlaps</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Stage: Canvas Preview & Timeline -->
+      <section class="stage-container">
+        
+        <!-- Top Stage: Animation Player Card -->
+        <div class="player-card">
+          <div class="player-header">
+            <div class="lesson-meta">
+              <h1 class="lesson-title" id="stage-title">ද්විමය සංඛ්‍යා දශම බවට හැරවීම (10110110)</h1>
+              <span class="step-pill" id="stage-step-pill">Step 1 of 5 • Show Binary</span>
+            </div>
+            <div class="player-resolution">
+              <div class="view-mode-pill">
+                <button class="view-btn active" id="btn-view-video">🎬 Rendered Manim Video</button>
+                <button class="view-btn" id="btn-view-canvas">⚡ Live Canvas</button>
+              </div>
+              <span class="res-tag">1080p @ 30fps</span>
+              <span class="lang-tag">si-LK (Sinhala)</span>
+            </div>
+          </div>
+
+          <!-- Video / SVG Animation Canvas -->
+          <div class="canvas-viewport" id="viewport">
+            <!-- Actual Rendered Manim MP4 Video -->
+            <video id="manim-video-player" class="manim-video-element" src="video.mp4" playsinline preload="auto" controls style="width: 100%; height: 100%; object-fit: contain; z-index: 5;"></video>
+
+            <div class="canvas-background" id="canvas-bg" style="display: none;"></div>
+            
+            <!-- Dynamic Animation Objects -->
+            <div class="animation-stage" id="animation-stage" style="display: none;">
+              <div class="stage-topic-header">Binary to Decimal Conversion</div>
+              
+              <!-- Bits Container -->
+              <div class="binary-grid" id="binary-grid">
+                <!-- Dynamically generated via JS -->
+              </div>
+
+              <!-- Place Values Container -->
+              <div class="place-values-grid" id="place-values-grid">
+                <!-- Dynamically generated via JS -->
+              </div>
+
+              <!-- Mathematical Equation Output -->
+              <div class="math-expression-display" id="math-expression">
+                <span class="eq-label">Sum:</span>
+                <span class="eq-content" id="eq-content">128 + 32 + 16 + 4 + 2 = 182</span>
+              </div>
+            </div>
+
+            <!-- Spoken Subtitle Overlay -->
+            <div class="narration-subtitle-box" id="subtitle-box">
+              <div class="audio-wave-anim">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <p class="subtitle-text" id="subtitle-text">
+                "අපිට දීලා තියෙන්නේ 10110110 කියන ද්විමය සංඛ්‍යාවයි. අපි දැන් මෙය දශම සංඛ්‍යාවක් බවට හරවමු."
+              </p>
+            </div>
+          </div>
+
+          <!-- Player Controls Bar -->
+          <div class="player-controls">
+            <button class="ctl-btn" id="btn-play-pause" title="Play/Pause">
+              <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="ctl-btn" id="btn-rewind" title="Restart">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            </button>
+            
+            <div class="scrub-container">
+              <span class="time-label" id="current-time">00:00.0</span>
+              <input type="range" id="timeline-scrubber" min="0" max="31.26" step="0.1" value="0">
+              <span class="time-label" id="total-time">00:31.2</span>
+            </div>
+
+            <div class="ctl-group-right">
+              <button class="ctl-btn small" id="btn-speed">1.0x</button>
+              <button class="ctl-btn small" id="btn-fullscreen" title="Fullscreen">⛶</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Stage: Multi-track Timeline -->
+        <div class="timeline-panel">
+          <div class="timeline-header">
+            <div class="timeline-title-area">
+              <span class="panel-icon">⏱️</span>
+              <span class="panel-title">Synchronized Event Timeline</span>
+              <span class="overlap-shield">✓ Overlap-Free Guard Active</span>
+            </div>
+            <div class="timeline-actions">
+              <button class="btn btn-tiny" id="btn-auto-pad">+ Auto Pad Gaps</button>
+              <button class="btn btn-tiny" id="btn-zoom-fit">Fit to Screen</button>
+            </div>
+          </div>
+
+          <div class="timeline-viewport">
+            <!-- Time ruler ticks -->
+            <div class="time-ruler" id="time-ruler">
+              <span>0s</span><span>5s</span><span>10s</span><span>15s</span><span>20s</span><span>25s</span><span>30s</span>
+            </div>
+
+            <!-- Visual Animation Track -->
+            <div class="track-row">
+              <div class="track-label">
+                <span class="track-icon">🎬</span>
+                <span>Visuals</span>
+              </div>
+              <div class="track-lane" id="visual-lane">
+                <!-- Visual event blocks generated dynamically -->
+              </div>
+            </div>
+
+            <!-- Voice Narration Track -->
+            <div class="track-row">
+              <div class="track-label">
+                <span class="track-icon">🔊</span>
+                <span>Narration</span>
+              </div>
+              <div class="track-lane" id="narration-lane">
+                <!-- Narration blocks generated dynamically -->
+              </div>
+            </div>
+
+            <!-- Playhead scrubber line -->
+            <div class="playhead" id="timeline-playhead">
+              <div class="playhead-handle"></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right Sidebar: AI Studio & Copilot -->
+      <aside class="sidebar-copilot">
+        <div class="copilot-header">
+          <div class="copilot-title">
+            <span class="sparkle">✨</span>
+            <span>AI Copilot & Inspector</span>
+          </div>
+          <span class="model-badge">Gemini</span>
+        </div>
+
+        <!-- Active Step Property Inspector -->
+        <div class="inspector-card">
+          <div class="inspector-title">Active Step: <span id="insp-step-id">step_01</span></div>
+          
+          <div class="prop-group">
+            <label class="prop-label">Step Type</label>
+            <input type="text" class="prop-input" id="insp-type" value="show_binary" readonly>
+          </div>
+
+          <div class="prop-group">
+            <label class="prop-label">Visual Duration</label>
+            <div class="input-with-unit">
+              <input type="number" class="prop-input" id="insp-duration" value="6.5" step="0.5">
+              <span>sec</span>
+            </div>
+          </div>
+
+          <div class="prop-group">
+            <label class="prop-label">Sinhala Narration (Educational)</label>
+            <textarea class="prop-textarea" id="insp-narration" rows="3">අපිට දීලා තියෙන්නේ 10110110 කියන binary සංඛ්‍යාවයි. අපි දැන් මෙය දශම සංඛ්‍යාවක් බවට හරවමු.</textarea>
+          </div>
+
+          <div class="prop-group">
+            <label class="prop-label">Spoken Representation (Phonetic)</label>
+            <textarea class="prop-textarea phonetic" id="insp-spoken" rows="2">අපිට දීලා තියෙන්නේ එක, බිංදුව, එක, එක, බිංදුව, එක, එක, බිංදුව කියන ද්විමය සංඛ්‍යාවයි.</textarea>
+          </div>
+
+          <button class="btn btn-secondary full-width" id="btn-update-step">Apply Changes</button>
+        </div>
+
+        <!-- AI Assistant Action Prompts -->
+        <div class="copilot-prompts">
+          <div class="section-heading">QUICK AI ASSISTANT</div>
+          <div class="chip-grid">
+            <button class="ai-chip" data-action="simplify">🌱 Make simpler</button>
+            <button class="ai-chip" data-action="sinhala">🇱🇰 Natural Sinhala</button>
+            <button class="ai-chip" data-action="grade8">🎒 Grade 8 level</button>
+            <button class="ai-chip" data-action="shorten">⏱️ Shorten speech</button>
+            <button class="ai-chip" data-action="verify">🔍 Math check</button>
+          </div>
+        </div>
+
+        <!-- Chat / Copilot interaction -->
+        <div class="copilot-chat">
+          <div class="chat-logs" id="chat-logs">
+            <div class="chat-msg ai">
+              <span class="msg-sender">Copilot:</span>
+              <p>Lesson plan loaded! Verified 10110110 = 182 with 0 narration collisions. Ready to edit or export.</p>
+            </div>
+          </div>
+          <div class="chat-input-bar">
+            <input type="text" id="copilot-prompt-input" placeholder="Ask AI to refine lesson or script..." spellcheck="false">
+            <button class="btn-send" id="btn-send-prompt">➤</button>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- Bottom Status Bar -->
+    <footer class="app-statusbar">
+      <div class="status-left">
+        <span class="status-item"><span class="bullet-green">●</span> Ready</span>
+        <span class="status-separator">|</span>
+        <span class="status-item">5 Steps</span>
+        <span class="status-separator">|</span>
+        <span class="status-item">Sinhala Audio Synced</span>
+        <span class="status-separator">|</span>
+        <span class="status-item">Estimated Runtime: 00:31.26</span>
+      </div>
+      <div class="status-right">
+        <span class="status-item">Encoding: H.264 / AAC</span>
+        <span class="status-separator">|</span>
+        <span class="status-item">Framework: .NET 8 + Manim Community</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Render / Export Modal Dialog -->
+  <div class="modal-overlay" id="render-modal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="modal-icon">🎬</span>
+          <span>Build & Render Manim Scene</span>
+        </div>
+        <button class="modal-close" id="btn-close-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>Pre-flight 5-Stage Verification</h3>
+          <div class="checklist">
+            <div class="check-item"><span class="badge-check">✓</span> Schema Integrity (Valid LessonModel)</div>
+            <div class="check-item"><span class="badge-check">✓</span> Mathematical Verification (10110110 = 182)</div>
+            <div class="check-item"><span class="badge-check">✓</span> Timeline Anchor Alignment</div>
+            <div class="check-item"><span class="badge-check">✓</span> Narration Overlap Scan (0 Overlaps)</div>
+            <div class="check-item"><span class="badge-check">✓</span> Scene IR Graph State Clean</div>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Render Settings</h3>
+          <div class="radio-group">
+            <label class="radio-label active">
+              <input type="radio" name="renderQuality" value="quick" checked>
+              <div>
+                <strong>Quick Preview (720p @ 30fps)</strong>
+                <p>Fast render for audio-visual timing checks.</p>
+              </div>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="renderQuality" value="master">
+              <div>
+                <strong>Master Export (1080p @ 60fps)</strong>
+                <p>Full resolution production MP4 with pristine anti-aliasing.</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="render-progress" id="render-progress-box" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
+          <div class="progress-status" id="progress-status-text">Generating Python scene...</div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-cancel-render">Cancel</button>
+        <button class="btn btn-accent" id="btn-start-render">Start Render</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
