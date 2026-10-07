@@ -1,0 +1,81 @@
+# Specific project plan file requested to ignore
+plan.md
+
+# Build and Output Directories (.NET)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TestResults/
+*.DotSettings.user
+
+# Visual Studio & VS Code
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+
+# Windows OS generated files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Manim & Media Outputs
+media/
+renders/
+cache/
+temp/
+*.mp4
+*.wav
+*.mp3
+*.aac
+*.partial.*
+
+# Secrets & Environment configuration
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.*.local.json
+credentials.json
+*.key
+
+# Package caches
+*.nupkg
+packages/
