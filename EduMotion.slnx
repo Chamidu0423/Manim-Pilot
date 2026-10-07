@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EduMotion.AI/EduMotion.AI.csproj" />
+    <Project Path="src/EduMotion.App/EduMotion.App.csproj" />
+    <Project Path="src/EduMotion.Audio/EduMotion.Audio.csproj" />
+    <Project Path="src/EduMotion.Core/EduMotion.Core.csproj" />
+    <Project Path="src/EduMotion.Math/EduMotion.Math.csproj" />
+    <Project Path="src/EduMotion.Rendering/EduMotion.Rendering.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EduMotion.Tests/EduMotion.Tests.csproj" />
+  </Folder>
+</Solution>
